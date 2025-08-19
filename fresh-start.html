@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fresh Start - Archita Jaiswal Blogs</title>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+
   <style>
-    /* Same styling as above */
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #fdfcfb;
@@ -15,15 +17,183 @@
       max-width: 1000px;
       margin: auto;
     }
+
     header {
       text-align: center;
       margin-bottom: 30px;
     }
+
     h1 {
       font-family: 'Shadows Into Light', cursive;
       font-size: 3em;
       margin-bottom: 5px;
     }
+
+    .date-line {
+      font-size: 0.95em;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .black-text {
+      color: black;
+      font-weight: bold;
+    }
+
+    .page-container {
+      display: flex;
+      gap: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .separator {
+      width: 2px;
+      background-color: #ccc;
+    }
+
+    .content-area {
+      flex: 3;
+      font-size: 1.1em;
+      line-height: 1.6em;
+    }
+
+    .photos-section {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .polaroid {
+      width: 260px;
+      background: white;
+      border: 2px solid black;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      transform: rotate(var(--angle, 0deg));
+      transition: transform 0.3s ease;
+    }
+
+    .polaroid:hover {
+      transform: translate(-10px, -10px);
+      box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .polaroid-date {
+      font-size: 0.85em;
+      padding: 10px 10px 5px;
+      text-align: center;
+      color: #555;
+    }
+
+    /* Suggested blogs text only */
+    .suggested {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding-left: 20px;
+    }
+
+    .suggested h3 {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      border-bottom: 2px solid black;
+      padding-bottom: 6px;
+    }
+
+    .suggested-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .suggested-list li {
+      margin: 12px 0;
+    }
+
+    .suggested-list a {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1.3em;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .suggested-list a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fresh Start</h1>
+    <p class="date-line"><span class="black-text">BLOGS</span> by <span class="black-text">ARCHITA JAISWAL</span> – 12 August 2025</p>
+  </header>
+
+  <div class="page-container">
+    <article class="content-area">
+      <p>A new chapter always begins with hope, lessons from the past, and dreams for the future. A fresh start is not about forgetting but about carrying forward with clarity.</p>
+
+      <section class="photos-section">
+        <div class="polaroid" style="--angle: -4deg;">
+          <img src="freshstartblog.webp" alt="Fresh start photo" />
+          <div class="polaroid-date">12.08.2025</div>
+        </div>
+        <div class="polaroid" style="--angle: 5deg;">
+          <img src="freshstartblog1.webp" alt="Fresh start photo 2" />
+          <div class="polaroid-date">12.08.2025</div>
+        </div>
+      </section>
+    </article>
+
+    <div class="separator"></div>
+
+    <aside class="suggested">
+      <h3>Suggested Blogs</h3>
+      <ul class="suggested-list">
+        <li><a href="last.html">Lasts</a></li>
+        <li><a href="life-as-army-kid.html">Life as an Army Kid</a></li>
+        <li><a href="birthday.html">My 17 th Birthday</a></li>
+        <li><a href="scribbles.html">Scribbles and Doodles</a></li>
+        <li><a href="farewell.html">Goodbye school !</a></li>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My 17th birthday - Archita Jaiswal Blogs</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfcfb;
+      color: #333;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 3em;
+      margin-bottom: 5px;
+    }
+
     .date-line {
       font-family: 'Segoe UI', sans-serif;
       font-weight: 400;
@@ -31,103 +201,122 @@
       color: #666;
       margin-bottom: 40px;
     }
+
     .black-text {
       color: black;
       font-weight: bold;
     }
-    .layout {
+
+    /* Layout */
+    .page-container {
       display: flex;
       gap: 40px;
-      align-items: flex-start;
+      max-width: 1000px;
+      margin: auto;
     }
-    .main-content {
-      flex: 2;
+
+    /* Separator */
+    .separator {
+      width: 2px;
+      background-color: #ccc;
+      height: auto;
     }
-    .content {
+
+    /* Main content */
+    .content-area {
+      flex: 3;
       font-size: 1.1em;
       line-height: 1.6em;
       margin-bottom: 60px;
     }
-    .suggested {
-      flex: 1;
-      max-width: 320px;
+
+    /* Photos section */
+    .photos-section {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 40px;
     }
-    .suggested h3 {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.8em;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .suggested-card {
-      position: relative;
-      width: 100%;
+
+    .polaroid {
+      width: 260px;
       background: white;
       border: 2px solid black;
-      margin-bottom: 25px;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      transform: rotate(var(--angle, 0deg));
       transition: transform 0.3s ease;
-      cursor: pointer;
     }
-    .suggested-card:hover {
+
+    .polaroid:hover {
       transform: translate(-10px, -10px);
+      box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
     }
-    .suggested-card .post-image {
+
+    .polaroid img {
       width: 100%;
-      height: 140px;
+      height: 180px;
       object-fit: cover;
-      background-color: #000;
+      object-position: top center; /* 👈 keeps your head visible */
     }
-    .suggested-card .post-content {
-      padding: 10px;
+
+    .polaroid-date {
+      font-size: 0.85em;
+      padding: 10px 10px 5px;
       text-align: center;
-    }
-    .post-title {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.2em;
-      margin: 0 0 6px 0;
-    }
-    .post-meta {
-      font-size: 0.8em;
       font-family: 'Segoe UI', sans-serif;
       color: #555;
     }
+
+    /* Suggested blogs - text only */
+    .suggested {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 20px;
+    }
+
+    .suggested h3 {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      border-bottom: 2px solid black;
+      padding-bottom: 6px;
+    }
+
+    .suggested-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .suggested-list li {
+      margin: 12px 0;
+    }
+
+    .suggested-list a {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1.3em;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.2s ease;
+    }
+
+    .suggested-list a:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
-<body>
+</html>
 
-<header>
-  <h1 class="blog-title">Fresh Start</h1>
-  <p class="date-line">
-    <span class="black-text">BLOGS</span> by 
-    <span class="black-text">ARCHITA JAISWAL</span> – 12 August 2025
-  </p>
-</header>
-
-<div class="layout">
-  <div class="main-content">
-    <article class="content">
-      <p>This blog talks about new beginnings and fresh starts... [your content here]</p>
-    </article>
+      </ul>
+    </aside>
   </div>
+</body>
+</html>
 
-  <aside class="suggested">
-    <h3>Suggested Blogs</h3>
 
-    <a href="scribbles.html" class="suggested-card">
-      <img src="scribbles.jpg" class="post-image" alt="Scribbles and Doodles" />
-      <div class="post-content">
-        <h2 class="post-title">scribbles and doodles</h2>
-        <p class="post-meta">12 April 2025</p>
-      </div>
-    </a>
-
-    <a href="life-as-army-kid.html" class="suggested-card">
-      <img src="armykid1.jpg" class="post-image" alt="Life as army kid" />
-      <div class="post-content">
-        <h
 
 
