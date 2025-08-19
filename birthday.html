@@ -42,7 +42,6 @@
       font-weight: bold;
     }
 
-    /* Layout */
     .page-container {
       display: flex;
       gap: 40px;
@@ -50,14 +49,11 @@
       margin: auto;
     }
 
-    /* Separator */
     .separator {
       width: 2px;
       background-color: #ccc;
-      height: auto;
     }
 
-    /* Main content */
     .content-area {
       flex: 3;
       font-size: 1.1em;
@@ -65,7 +61,6 @@
       margin-bottom: 60px;
     }
 
-    /* Photos section */
     .photos-section {
       display: flex;
       gap: 20px;
@@ -90,9 +85,10 @@
 
     .polaroid img {
       width: 100%;
-      height: 180px;
+      height: 180px; 
       object-fit: cover;
-      object-position: top center; /* 👈 keeps your head visible */
+      object-position: top center;  /* ✅ keeps your head visible */
+      display: block;
     }
 
     .polaroid-date {
@@ -103,21 +99,17 @@
       color: #555;
     }
 
-    /* Suggested blogs - text only */
     .suggested {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
       padding-left: 20px;
     }
 
     .suggested h3 {
       font-family: 'Shadows Into Light', cursive;
       font-size: 1.8em;
-      margin-bottom: 15px;
       border-bottom: 2px solid black;
       padding-bottom: 6px;
+      margin-bottom: 15px;
     }
 
     .suggested-list {
@@ -135,207 +127,48 @@
       font-size: 1.3em;
       text-decoration: none;
       color: #333;
-      transition: all 0.2s ease;
     }
 
     .suggested-list a:hover {
       text-decoration: underline;
     }
-
   </style>
 </head>
 <body>
-
   <header>
-    <h1 class="blog-title">My 17th Birthday</h1>
-    <p class="date-line">
-      <span class="black-text">BLOGS</span> by 
-      <span class="black-text">ARCHITA JAISWAL</span> – 19 October 2023
-    </p>
+    <h1>My 17th birthday</h1>
+    <p class="date-line"><span class="black-text">BLOGS</span> by <span class="black-text">ARCHITA JAISWAL</span> – 19 October 2023</p>
   </header>
 
   <div class="page-container">
-
-    <!-- Main Blog Content -->
     <article class="content-area">
-      <p>Birthdays are not just about growing older, they are about cherishing moments, laughter, and love that surrounds you. This was one of those birthdays I will always treasure.</p>
+      <p>SEVENTEEN! , i know right , i was equally excited as any one would be on their seventeenth . I didn't slept  the night before my birthday , thinking about all of it  , thinking of the dress i bought , a bodycon dress , as i always dreamt of , me and my frnds in a aesthetic cafe . FIRST TIME EVER IN LIFE cuz before this time i always use to keep it small , just with my family members . i ordered my favourite --chocolate cake ! , YUMMM! </p>
+<p> we ate red sauce pastas , we gossiped and we laughed all together . Also i didn't told u about the best part -- PRESENTS!   So, i got a very cute sipper as a gift and an aesthetic mug . We ended our celebration with mug of cold coffee and laughters .I had too much fun with my girlies. The birthday was worthy remembering!</p>
 
-      <!-- Birthday Photos -->
       <section class="photos-section">
-        <div class="polaroid" style="--angle: -4deg;">
-          <img src="birthday 17.jpg" alt="Birthday photo 1" />
+        <div class="polaroid" style="--angle: -2deg;">
+          <img src="birthday 17.jpg" alt="Birthday celebration" />
           <div class="polaroid-date">18.10.2023</div>
         </div>
-
       </section>
     </article>
 
-    <!-- Vertical Separator -->
     <div class="separator"></div>
 
-    <!-- Suggested Blogs Sidebar -->
     <aside class="suggested">
       <h3>Suggested Blogs</h3>
       <ul class="suggested-list">
-        <li><a href="last.html">Lasts</a></li>
-        <li><a href="life-as-army-kid.html">Life as an Army Kid</a></li>
-        <li><a href="fresh-start.html">Fresh Start</a></li>
         <li><a href="scribbles.html">Scribbles and Doodles</a></li>
         <li><a href="farewell.html">Goodbye school !</a></li>
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My 17th birthday - Archita Jaiswal Blogs</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
-
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdfcfb;
-      color: #333;
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    h1 {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 3em;
-      margin-bottom: 5px;
-    }
-
-    .date-line {
-      font-family: 'Segoe UI', sans-serif;
-      font-weight: 400;
-      font-size: 0.95em;
-      color: #666;
-      margin-bottom: 40px;
-    }
-
-    .black-text {
-      color: black;
-      font-weight: bold;
-    }
-
-    /* Layout */
-    .page-container {
-      display: flex;
-      gap: 40px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    /* Separator */
-    .separator {
-      width: 2px;
-      background-color: #ccc;
-      height: auto;
-    }
-
-    /* Main content */
-    .content-area {
-      flex: 3;
-      font-size: 1.1em;
-      line-height: 1.6em;
-      margin-bottom: 60px;
-    }
-
-    /* Photos section */
-    .photos-section {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 40px;
-    }
-
-    .polaroid {
-      width: 260px;
-      background: white;
-      border: 2px solid black;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-      transform: rotate(var(--angle, 0deg));
-      transition: transform 0.3s ease;
-    }
-
-    .polaroid:hover {
-      transform: translate(-10px, -10px);
-      box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
-    }
-
-    .polaroid img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      object-position: top center; /* 👈 keeps your head visible */
-    }
-
-    .polaroid-date {
-      font-size: 0.85em;
-      padding: 10px 10px 5px;
-      text-align: center;
-      font-family: 'Segoe UI', sans-serif;
-      color: #555;
-    }
-
-    /* Suggested blogs - text only */
-    .suggested {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding-left: 20px;
-    }
-
-    .suggested h3 {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.8em;
-      margin-bottom: 15px;
-      border-bottom: 2px solid black;
-      padding-bottom: 6px;
-    }
-
-    .suggested-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .suggested-list li {
-      margin: 12px 0;
-    }
-
-    .suggested-list a {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.3em;
-      text-decoration: none;
-      color: #333;
-      transition: all 0.2s ease;
-    }
-
-    .suggested-list a:hover {
-      text-decoration: underline;
-    }
-
-  </style>
-</head>
-</html>
-
+        <li><a href="life-as-army-kid.html">Life as an Army Kid</a></li>
+        <li><a href="last.html">Lasts</a></li>
       </ul>
     </aside>
   </div>
-
 </body>
 </html>
+
+
 
 
 
