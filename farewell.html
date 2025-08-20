@@ -142,10 +142,18 @@
 
   <div class="page-container">
     <article class="content-area">
-      <p>School goodbyes are unlike any other. It’s not just the walls and classrooms you leave behind, but the laughter in corridors, the friendships scribbled in notebooks, the secrets shared on playgrounds, and the comfort of routine. The farewell is both heavy and hopeful — heavy with memories, yet hopeful for the roads ahead.</p>
+      <p>Farewell was one of those bittersweet days that felt like both a celebration and a goodbye. Standing on the familiar assembly ground, the place where we had gathered every morning for years, suddenly felt different. It wasn’t the usual school day lineup—it was us, dressed in sarees and suits, stepping into an entirely new version of ourselves. For many, it was the first time seeing everyone in such attire, and honestly, the sight of girls in their graceful sarees and the boys in sharp suits felt straight out of a movie.</p>
+
+<p>The most symbolic moment was the candle-passing ceremony. On that very ground where we once sang patriotic songs and took the pledge, we now stood handing over the flame to our juniors. It wasn’t just a candle—it was a passing of traditions, memories, and a silent promise that they would carry the school’s spirit forward. That moment carried weight, reminding us that our time as seniors had truly come to an end.</p>
+
+<p>But the emotions soon blended with joy when the music started. Bollywood party songs blasted through the speakers, and we all danced with abandon. The ground that had seen us march and stand in discipline now saw us laughing, singing, and dancing like there was no tomorrow. Everyone joined in, whether they could dance or not—it was pure celebration.</p>
+
+<p>The day ended with our last class photograph. All of us in sarees and suits, standing beside our class teacher and principal on the same ground where countless memories were made, smiling through both pride and sadness. That picture wasn’t just a photo—it was the closing page of our school journey, a memory frozen forever.</p>
+
+<p>Farewell on the assembly ground was more than an event—it was the perfect full stop to our school life.</p>
 
 <section class="photos-section">
-        <div class="polaroid" style="--angle: -4deg;">
+        <div class="polaroid1" style="--angle: -4deg;">
           <img src="farewell2.jpg" alt="Farwell2" />
           <div class="polaroid-date">12.08.2025</div>
         </div>
@@ -171,6 +179,7 @@
         <li><a href="life-as-army-kid.html">Life as an Army Kid</a></li>
         <li><a href="birthday.html">My 17th birthday</a></li>
         <li><a href="scribbles.html">Scribbles and Doodles</a></li>
+        <li><a href="index.html">Home</a></li>
         <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -256,17 +265,40 @@
       transition: transform 0.3s ease;
     }
 
-    .polaroid:hover {
-      transform: translate(-10px, -10px);
-      box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
-    }
-
+    
     .polaroid img {
       width: 100%;
       height: 180px;
       object-fit: cover;
       object-position: top center; /* 👈 keeps your head visible */
     }
+.polaroid:hover {
+      transform: translate(-10px, -10px);
+      box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
+    }
+.polaroid1 {
+      width: 260px;
+      background: white;
+      border: 2px solid black;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      transform: rotate(var(--angle, 0deg));
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.polaroid1 img {
+      width: 100%;
+      height: auto;             /* natural aspect ratio */
+      object-fit: contain;      /* full image visible */
+      object-position: center;  /* keep image centered */
+      display: block;
+    }
+.polaroid1:hover {
+      transform: translate(-10px, -10px);
+      box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
+    }
+
+
+
+
 
     .polaroid-date {
       font-size: 0.85em;
