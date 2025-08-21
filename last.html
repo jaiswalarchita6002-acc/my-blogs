@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,16 +64,41 @@
       margin-bottom: 60px;
     }
 
-    /* Blog Polaroids (Nested) */
+    /* Polaroid Wrapper */
+    .polaroid-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    /* Shadow box */
+    .shadow-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      border: 3px solid black;
+      z-index: 1;
+      opacity: 0;
+      transform: translate(0, 0);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Polaroid */
     .polaroid {
+      position: relative;
       width: 260px;
       background: white;
-      border: 2px solid black;
+      border: 3px solid black;
       transform: rotate(var(--angle, 0deg));
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
       color: inherit;
       display: inline-block;
+      z-index: 2;
+      overflow: visible;
+      transition: transform 0.3s ease;
     }
 
     .polaroid img {
@@ -85,6 +111,8 @@
     .polaroid-content {
       padding: 12px;
       text-align: center;
+      background: white;
+      transition: transform 0.3s ease, scale 0.3s ease, border 0.3s ease;
     }
 
     .polaroid-title {
@@ -100,37 +128,28 @@
       color: #555;
     }
 
-    /* Hover effect – hard black shadow only */
-    .polaroid:hover {
-      transform: translate(-10px, -10px);
-      box-shadow: 20px 20px 0px black;
+    /* Hover Effects */
+    .polaroid-wrapper:hover .polaroid {
+      transform: translate(-12px, -12px);
     }
 
-    /* Remove underline from polaroid titles */
-    .polaroid-title,
-    .polaroid:hover .polaroid-title {
-      text-decoration: none !important;
+    .polaroid-wrapper:hover .shadow-box {
+      opacity: 1;
+      transform: translate(8px, 8px);
+    }
+
+    .polaroid-wrapper:hover .polaroid-content {
+      transform: translate(-8px, -20px) scale(0.9);
+      border: 2px solid black;
     }
 
     /* Photos section */
     .photos-section {
       display: flex;
-      gap: 20px;
+      gap: 30px;
       flex-wrap: wrap;
       justify-content: center;
       margin-top: 40px;
-    }
-
-    .photos-section .polaroid img {
-      height: 180px;
-    }
-
-    .polaroid-date {
-      font-size: 0.85em;
-      padding: 10px 10px 5px;
-      text-align: center;
-      font-family: 'Segoe UI', sans-serif;
-      color: #555;
     }
 
     /* Suggested blogs sidebar */
@@ -181,32 +200,38 @@
       <p>Goodbyes are bittersweet, and thinking of my final goodbye to my school was hard.<br>
       Here are some blogs and pictures about my "Lasts":</p>
 
-      <!-- Nested Polaroids -->
+      <!-- Nested Polaroids with shadow -->
       <section class="photos-section">
-        <a href="scribbles.html" class="polaroid" style="--angle: -4deg;">
-          <img src="scribbles1.jpg" alt="Scribbles Thumbnail" />
-          <div class="polaroid-content">
-            <h2 class="polaroid-title">scribbles and doodles</h2>
-            <p class="polaroid-meta">
-              <span class="black-text">BLOGS</span> by 
-              <span class="black-text">ARCHITA JAISWAL</span> – 15 April 2025
-            </p>
-          </div>
-        </a>
 
-        <a href="farewell.html" class="polaroid" style="--angle: 3deg;">
-          <img src="farewell1.jpg" alt="Farewell Thumbnail" />
-          <div class="polaroid-content">
-            <h2 class="polaroid-title">Goodbye school !</h2>
-            <p class="polaroid-meta">
-              <span class="black-text">BLOGS</span> by 
-              <span class="black-text">ARCHITA JAISWAL</span> – 15 April 2025
-            </p>
-          </div>
-        </a>
+        <div class="polaroid-wrapper">
+          <a href="scribbles.html" class="polaroid" style="--angle: -4deg;">
+            <img src="scribbles1.jpg" alt="Scribbles Thumbnail" />
+            <div class="polaroid-content">
+              <h2 class="polaroid-title">scribbles and doodles</h2>
+              <p class="polaroid-meta">
+                <span class="black-text">BLOGS</span> by 
+                <span class="black-text">ARCHITA JAISWAL</span> – 15 April 2025
+              </p>
+            </div>
+          </a>
+          <div class="shadow-box"></div>
+        </div>
+
+        <div class="polaroid-wrapper">
+          <a href="farewell.html" class="polaroid" style="--angle: 3deg;">
+            <img src="farewell1.jpg" alt="Farewell Thumbnail" />
+            <div class="polaroid-content">
+              <h2 class="polaroid-title">Goodbye school !</h2>
+              <p class="polaroid-meta">
+                <span class="black-text">BLOGS</span> by 
+                <span class="black-text">ARCHITA JAISWAL</span> – 15 April 2025
+              </p>
+            </div>
+          </a>
+          <div class="shadow-box"></div>
+        </div>
+
       </section>
-
-      
     </article>
 
     <!-- Vertical Separator -->
@@ -219,20 +244,12 @@
       <a href="life-as-army-kid.html">Life as an Army Kid</a>
       <a href="birthday.html">My 17th birthday</a>
       <a href="index.html">Home</a>
-      
-   
- </ul>
     </aside>
   </div>
 
 </body>
 </html>
 
-      </ul>
-    </aside>
-  </div>
-</body>
-</html>
 
 
 
