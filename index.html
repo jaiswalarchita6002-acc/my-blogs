@@ -1,13 +1,14 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Archita Jaiswal Blogs</title>
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
-
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -17,29 +18,68 @@
       position: relative;
       overflow-x: hidden;
     }
-
     header {
       text-align: center;
       margin-bottom: 40px;
       position: relative;
     }
-
-    /* ABOUT link */
-    .about-link {
+    .top-links {
       position: absolute;
       top: 10px;
       right: 20px;
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.5em;
-      color: #333;
-      text-decoration: none;
-      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
-
-    .about-link:hover {
+    .top-links a {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1.2em;
+      text-decoration: none;
+      color: black;
+    }
+    .top-links a:hover {
       text-decoration: underline;
     }
-
+    .search-container {
+      position: relative;
+    }
+    .search-container input {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1em;
+      padding: 5px 30px 5px 8px;
+      border: 2px solid black;
+      outline: none;
+      border-radius: 5px;
+    }
+    .search-container .icon {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+    }
+    .search-results {
+      position: absolute;
+      top: 35px;
+      left: 0;
+      width: 100%;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      max-height: 150px;
+      overflow-y: auto;
+      display: none;
+      z-index: 10;
+    }
+    .search-results div {
+      padding: 5px 8px;
+      cursor: pointer;
+      font-family: 'Shadows Into Light', cursive;
+    }
+    .search-results div:hover {
+      background: #f0f0f0;
+    }
     .blog-title {
       font-size: 3em;
       font-family: 'Shadows Into Light', cursive;
@@ -48,7 +88,6 @@
       align-items: center;
       gap: 10px;
     }
-
     .black-box {
       background-color: black;
       color: white;
@@ -59,7 +98,6 @@
       text-transform: uppercase;
       width: fit-content;
     }
-
     .torn-image {
       width: 60px;
       height: 60px;
@@ -70,18 +108,15 @@
       margin-right: 15px;
       margin-left: -10px;
     }
-
     .blog-grid {
       position: relative;
       height: 1400px;
     }
-
     .blog-wrapper {
       position: absolute;
       width: 260px;
       height: 310px;
     }
-
     .shadow-box {
       position: absolute;
       top: 0;
@@ -93,7 +128,6 @@
       z-index: 1;
       transition: transform 0.3s ease;
     }
-
     .blog-post {
       position: absolute;
       top: 0;
@@ -112,22 +146,18 @@
       overflow: visible;
       transition: transform 0.3s ease;
     }
-
     .blog-post:hover {
       transform: translate(-12px, -12px);
     }
-
     .blog-post:hover ~ .shadow-box {
       transform: translate(8px, 8px);
     }
-
     .post-image {
       width: 100%;
       height: 210px;
       object-fit: cover;
       background-color: #000;
     }
-
     .post-content {
       padding: 10px 12px 5px;
       text-align: center;
@@ -136,37 +166,31 @@
       flex-direction: column;
       justify-content: center;
       background: white;
-      border: none; /* default: no border */
+      border: none;
       z-index: 3;
       transition: transform 0.3s ease, scale 0.3s ease, border 0.3s ease;
     }
-
     .blog-post:hover .post-content {
-      /* Less diagonal, more upward + shrink */
       transform: translate(-8px, -20px) scale(0.9);
       border: 2px solid black;
     }
-
     .post-title {
       font-family: 'Shadows Into Light', cursive;
       font-size: 1.2em;
       margin: 0;
     }
-
     .post-date {
       margin-top: 5px;
       font-size: 0.85em;
       color: #555;
       font-family: 'Segoe UI', sans-serif;
     }
-
     footer {
       text-align: center;
       margin-top: 50px;
       font-size: 0.9em;
       color: #aaa;
     }
-
     .overlay {
       position: fixed;
       top: 0;
@@ -179,12 +203,10 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
-
     .overlay.show {
       opacity: 1;
       pointer-events: all;
     }
-
     /* Fixed positions */
     .blog-wrapper:nth-child(1) { top: 40px; left: 60px; }
     .blog-wrapper:nth-child(2) { top: 180px; left: 340px; }
@@ -196,16 +218,27 @@
   <div class="overlay" id="overlay"></div>
   
   <header>
-    <!-- ABOUT link -->
-    <a href="about.html" class="about-link">ABOUT</a>
-
+    <div class="top-links">
+      <a href="about.html">ABOUT</a>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search blogs..." />
+        <span class="icon">
+          <!-- Solid black SVG magnifying glass -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zm-5.242 1.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+          </svg>
+        </span>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+    
     <div class="blog-title">
       <img src="new pfp.jpg" alt="Profile" class="torn-image" />
       <span style="font-family: 'Shadows Into Light', cursive;">Archita Jaiswal</span>
       <span class="black-box">BLOGS</span>
     </div>
   </header>
-
+  
   <main class="blog-grid">
     <!-- Blog Post: My 17th Birthday -->
     <div class="blog-wrapper">
@@ -218,7 +251,7 @@
       </a>
       <div class="shadow-box"></div>
     </div>
-
+    
     <!-- Blog Post: Fresh Start -->
     <div class="blog-wrapper">
       <a href="fresh-start.html" class="blog-post">
@@ -230,7 +263,7 @@
       </a>
       <div class="shadow-box"></div>
     </div>
-
+    
     <!-- Blog Post: Life as army kid -->
     <div class="blog-wrapper">
       <a href="life-as-army-kid.html" class="blog-post">
@@ -242,7 +275,7 @@
       </a>
       <div class="shadow-box"></div>
     </div>
-
+    
     <!-- Blog Post: LAST -->
     <div class="blog-wrapper">
       <a href="last.html" class="blog-post">
@@ -255,10 +288,48 @@
       <div class="shadow-box"></div>
     </div>
   </main>
-
+  
   <footer>
     <p>© 2025 Archita Jaiswal. All rights reserved.</p>
   </footer>
+  
+  <script>
+    const blogs = [
+      { title: "My 17th Birthday", url: "birthday.html" },
+      { title: "Fresh Start", url: "fresh-start.html" },
+      { title: "Life as army kid", url: "life-as-army-kid.html" },
+      { title: "LASTS", url: "last.html" },
+      { title: "Scribbles and Doodles", url: "scribbles-doodles.html" },
+      { title: "Goodbye School", url: "goodbye-school.html" }
+    ];
+    
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+    
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      searchResults.innerHTML = "";
+      
+      if (query) {
+        const matches = blogs.filter(blog => blog.title.toLowerCase().includes(query));
+        matches.forEach(match => {
+          const div = document.createElement("div");
+          div.textContent = match.title;
+          div.onclick = () => window.location.href = match.url;
+          searchResults.appendChild(div);
+        });
+        searchResults.style.display = matches.length ? "block" : "none";
+      } else {
+        searchResults.style.display = "none";
+      }
+    });
+    
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".search-container")) {
+        searchResults.style.display = "none";
+      }
+    });
+  </script>
 </body>
 </html>
 
