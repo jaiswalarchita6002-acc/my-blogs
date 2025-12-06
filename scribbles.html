@@ -127,6 +127,44 @@
     .suggested-list a:hover {
       text-decoration: underline;
     }
+    /* COMMENT SECTION STYLING */
+    #commentBox {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 16px;
+      margin-top: 40px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: vertical;
+    }
+
+    #submitBtn {
+      margin-top: 10px;
+      padding: 8px 15px;
+      font-size: 16px;
+      font-family: 'Shadows Into Light', cursive;
+      cursor: pointer;
+      border-radius: 6px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      transition: background 0.2s ease;
+    }
+
+    #submitBtn:hover {
+      background-color: #555;
+    }
+
+    .comment {
+      background: #f4f4f4;
+      font-family: 'Shadows Into Light', cursive;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+    }
+
   </style>
 </head>
 <body>
@@ -157,6 +195,13 @@
           <div class="polaroid-date">11.01.2025</div>
         </div>
       </section>
+
+    <!-- COMMENT SECTION STARTS HERE -->
+      <textarea id="commentBox" placeholder="Write your comment..."></textarea>
+      <button id="submitBtn" onclick="postComment()">Submit</button>
+      <div id="commentsList"></div>
+      <!-- COMMENT SECTION ENDS HERE -->
+
     </article>
 
     <div class="separator"></div>
@@ -165,13 +210,66 @@
       <h3>Suggested Blogs</h3>
       <ul class="suggested-list">
         <li><a href="farewell.html">Goodbye school !</a></li>
-        <li><a href="fresh-start.html">Fresh Start</a></li>
+        <li><a href="date.html">LOVE NOWADAYS</a></li>
         <li><a href="life-as-army-kid.html">Life as an Army Kid</a></li>
         <li><a href="birthday.html">My 17th birthday</a></li>
         <li><a href="index.html">Home</a></li>
       </ul>
     </aside>
   </div>
+
+<!-- FIREBASE SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    const BLOG_ID = "scribbles";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
+      authDomain: "comment-123.firebaseapp.com",
+      projectId: "comment-123",
+      storageBucket: "comment-123.firebasestorage.app",
+      messagingSenderId: "1094221233460",
+      appId: "1:1094221233460:web:a149795852cdfe0908f961",
+      measurementId: "G-N88Z8M65Q1"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    function postComment() {
+      const commentText = document.getElementById("commentBox").value;
+
+      if (commentText.trim() === "") {
+        alert("Please write something!");
+        return;
+      }
+
+      db.collection("blogs")
+        .doc(BLOG_ID)
+        .collection("comments")
+        .add({
+          text: commentText,
+          time: Date.now()
+        });
+
+      document.getElementById("commentBox").value = "";
+    }
+
+    db.collection("blogs")
+      .doc(BLOG_ID)
+      .collection("comments")
+      .orderBy("time", "desc")
+      .onSnapshot(snapshot => {
+        let html = "";
+        snapshot.forEach(doc => {
+          html += `<div class="comment">${doc.data().text}</div>`;
+        });
+        document.getElementById("commentsList").innerHTML = html;
+      });
+  </script>
+
 </body>
 </html>
 

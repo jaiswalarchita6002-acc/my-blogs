@@ -132,7 +132,45 @@
     .suggested-list a:hover {
       text-decoration: underline;
     }
+   /* COMMENT SECTION STYLING */
+    #commentBox {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 16px;
+      margin-top: 40px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: vertical;
+    }
+
+    #submitBtn {
+      margin-top: 10px;
+      padding: 8px 15px;
+      font-size: 16px;
+      font-family: 'Shadows Into Light', cursive;
+      cursor: pointer;
+      border-radius: 6px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      transition: background 0.2s ease;
+    }
+
+    #submitBtn:hover {
+      background-color: #555;
+    }
+
+    .comment {
+      background: #f4f4f4;
+      font-family: 'Shadows Into Light', cursive;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+    }
   </style>
+
 </head>
 <body>
   <header>
@@ -153,7 +191,7 @@
 <p>Farewell on the assembly ground was more than an event—it was the perfect full stop to our school life.</p>
 
 <section class="photos-section">
-        <div class="polaroid1" style="--angle: -4deg;">
+        <div class="polaroid" style="--angle: -4deg;">
           <img src="farewell2.jpg" alt="Farwell2" />
           <div class="polaroid-date">12.08.2025</div>
         </div>
@@ -166,7 +204,12 @@
           <div class="polaroid-date">15.01.2025</div>
         </div>
       </section>
-    </article>
+
+     <!-- COMMENT SECTION STARTS HERE -->
+      <textarea id="commentBox" placeholder="Write your comment..."></textarea>
+      <button id="submitBtn" onclick="postComment()">Submit</button>
+      <div id="commentsList"></div>
+      <!-- COMMENT SECTION ENDS HERE -->
 
     </article>
 
@@ -180,188 +223,60 @@
         <li><a href="birthday.html">My 17th birthday</a></li>
         <li><a href="scribbles.html">Scribbles and Doodles</a></li>
         <li><a href="index.html">Home</a></li>
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My 17th birthday - Archita Jaiswal Blogs</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
-
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdfcfb;
-      color: #333;
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    h1 {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 3em;
-      margin-bottom: 5px;
-    }
-
-    .date-line {
-      font-family: 'Segoe UI', sans-serif;
-      font-weight: 400;
-      font-size: 0.95em;
-      color: #666;
-      margin-bottom: 40px;
-    }
-
-    .black-text {
-      color: black;
-      font-weight: bold;
-    }
-
-    /* Layout */
-    .page-container {
-      display: flex;
-      gap: 40px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    /* Separator */
-    .separator {
-      width: 2px;
-      background-color: #ccc;
-      height: auto;
-    }
-
-    /* Main content */
-    .content-area {
-      flex: 3;
-      font-size: 1.1em;
-      line-height: 1.6em;
-      margin-bottom: 60px;
-    }
-
-    /* Photos section */
-    .photos-section {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 40px;
-    }
-
-    .polaroid {
-      width: 260px;
-      background: white;
-      border: 2px solid black;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-      transform: rotate(var(--angle, 0deg));
-      transition: transform 0.3s ease;
-    }
-
-    
-    .polaroid img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      object-position: top center; /* 👈 keeps your head visible */
-    }
-.polaroid:hover {
-      transform: translate(-10px, -10px);
-      box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
-    }
-.polaroid1 {
-      width: 260px;
-      background: white;
-      border: 2px solid black;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-      transform: rotate(var(--angle, 0deg));
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.polaroid1 img {
-      width: 100%;
-      height: auto;             /* natural aspect ratio */
-      object-fit: contain;      /* full image visible */
-      object-position: center;  /* keep image centered */
-      display: block;
-    }
-.polaroid1:hover {
-      transform: translate(-10px, -10px);
-      box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
-    }
-
-
-
-
-
-    .polaroid-date {
-      font-size: 0.85em;
-      padding: 10px 10px 5px;
-      text-align: center;
-      font-family: 'Segoe UI', sans-serif;
-      color: #555;
-    }
-
-    /* Suggested blogs - text only */
-    .suggested {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding-left: 20px;
-    }
-
-    .suggested h3 {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.8em;
-      margin-bottom: 15px;
-      border-bottom: 2px solid black;
-      padding-bottom: 6px;
-    }
-
-    .suggested-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .suggested-list li {
-      margin: 12px 0;
-    }
-
-    .suggested-list a {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.3em;
-      text-decoration: none;
-      color: #333;
-      transition: all 0.2s ease;
-    }
-
-    .suggested-list a:hover {
-      text-decoration: underline;
-    }
-
-  </style>
-</head>
-<body>
-
- 
-  
-      </section>
-    </article>
-
-   
-</body>
-</html>
-
       </ul>
     </aside>
-  </div>
+  </div>   
+    <!-- FIREBASE SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    const BLOG_ID = "farewell";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
+      authDomain: "comment-123.firebaseapp.com",
+      projectId: "comment-123",
+      storageBucket: "comment-123.firebasestorage.app",
+      messagingSenderId: "1094221233460",
+      appId: "1:1094221233460:web:a149795852cdfe0908f961",
+      measurementId: "G-N88Z8M65Q1"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    function postComment() {
+      const commentText = document.getElementById("commentBox").value;
+
+      if (commentText.trim() === "") {
+        alert("Please write something!");
+        return;
+      }
+
+      db.collection("blogs")
+        .doc(BLOG_ID)
+        .collection("comments")
+        .add({
+          text: commentText,
+          time: Date.now()
+        });
+
+      document.getElementById("commentBox").value = "";
+    }
+
+    db.collection("blogs")
+      .doc(BLOG_ID)
+      .collection("comments")
+      .orderBy("time", "desc")
+      .onSnapshot(snapshot => {
+        let html = "";
+        snapshot.forEach(doc => {
+          html += `<div class="comment">${doc.data().text}</div>`;
+        });
+        document.getElementById("commentsList").innerHTML = html;
+      });
+  </script>
+
 </body>
 </html>
