@@ -224,7 +224,47 @@
     .blog-wrapper:nth-child(5) { top: 580px; left: 140px; }
     .blog-wrapper:nth-child(6) { top: 580px; left: 550px; }
     .blog-wrapper:nth-child(7) { top: 1005px; left: 500px; }
-  </style>
+ 
+.social-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Logos style */
+.social-icons img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* Tooltip for Google */
+.google-logo {
+  position: relative;
+  display: inline-block;
+}
+
+.google-logo:hover::after {
+  content: attr(data-email);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  z-index: 10;
+}
+</style>
 </head>
 <body>
   <div class="overlay" id="overlay"></div>
@@ -337,6 +377,18 @@
       </a>
       <div class="shadow-box"></div>
     </div>
+ 
+    <div class="social-icons">
+  <!-- Google Logo -->
+  <a href="#" class="google-logo" data-email="architajaiswal6081@gmail.com">
+    <img src="logo3.png" alt="Google Login" />
+  </a>
+  
+  <!-- Instagram Logo -->
+  <a href="https://www.instagram.com/it_me_archie" target="_blank" class="instagram-logo">
+    <img src="download.png" alt="Instagram" />
+  </a>
+</div>
 
   </main>
   

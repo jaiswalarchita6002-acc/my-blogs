@@ -193,7 +193,40 @@
       border: none;
       font-size: 18px;
     }
-  </style>
+    <style>
+/* Circle for initials */
+.user-initials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: bold;
+  font-family: 'Segoe UI', sans-serif;
+  cursor: default;
+  margin-right: 8px;
+  position: relative;
+}
+
+/* Tooltip */
+.user-initials:hover::after {
+  content: attr(data-email);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  white-space: nowrap;
+  z-index: 10;
+}
+ </style>
 </head>
 <body>
   <header>
@@ -281,6 +314,27 @@
         alert("Please write something!");
         return;
       }
+      
+      db.collection("blogs")
+  .doc(BLOG_ID)
+  .collection("comments")
+  .orderBy("time", "desc")
+  .onSnapshot(snapshot => {
+    let html = "";
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const initials = data.userEmail.charAt(0).toUpperCase();
+      html += `
+        <div class="comment">
+          <span class="user-initials" data-email="${data.userEmail}">${initials}</span>
+          ${data.text}
+        </div>
+      `;
+    });
+    document.getElementById("commentsList").innerHTML = html;
+  });
+
+     
       db.collection("blogs")
         .doc(BLOG_ID)
         .collection("comments")
