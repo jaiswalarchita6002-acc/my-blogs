@@ -1,0 +1,86 @@
+// comments.js
+
+let currentUser = null;
+
+// Firebase references (make sure firebase is initialized in HTML before this)
+const db = firebase.firestore();
+const auth = firebase.auth();
+
+// Sign in with Google
+function signIn() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider).then((result) => {
+    currentUser = result.user;
+    alert(`Signed in as ${currentUser.displayName}`);
+  });
+}
+
+// Sign out (optional)
+function signOut() {
+  auth.signOut().then(() => {
+    currentUser = null;
+    alert("Signed out");
+  });
+}
+
+// Post a comment
+document.getElementById("submitBtn").addEventListener("click", () => {
+  if (!currentUser) {
+    alert("Please sign in first!");
+    signIn();
+    return;
+  }
+
+  const commentText = document.getElementById("commentBox").value.trim();
+  if (!commentText) return alert("Write something!");
+
+  db.collection("blogs").doc(BLOG_ID).collection("comments").add({
+    text: commentText,
+    userId: currentUser.uid,
+    userName: currentUser.displayName,
+    time: Date.now()
+  });
+
+  document.getElementById("commentBox").value = "";
+});
+
+// Display comments with initials in a circle
+db.collection("blogs")
+  .doc(BLOG_ID)
+  .collection("comments")
+  .orderBy("time", "desc")
+  .onSnapshot(snapshot => {
+    let html = "";
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const initials = data.userName ? data.userName.charAt(0).toUpperCase() : "?";
+      const canDelete = currentUser && currentUser.uid === data.userId;
+      html += `
+        <div class="comment-wrapper" style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+          <div style="width:35px;height:35px;background:#333;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-family: 'Segoe UI', sans-serif;">
+            ${initials}
+          </div>
+          <div class="comment" style="flex-grow:1; padding:8px 10px; border-radius:6px; background:#f4f4f4; font-family:'Shadows Into Light', cursive;">
+            ${data.text}
+          </div>
+          ${canDelete ? `<button onclick="deleteComment('${doc.id}')" style="cursor:pointer;">❌</button>` : ""}
+        </div>
+      `;
+    });
+    document.getElementById("commentsList").innerHTML = html;
+  });
+
+// Delete comment
+function deleteComment(commentId) {
+  if (!currentUser) return;
+  db.collection("blogs")
+    .doc(BLOG_ID)
+    .collection("comments")
+    .doc(commentId)
+    .delete();
+}
+
+// Keep track of signed-in user
+auth.onAuthStateChanged(user => {
+  currentUser = user;
+});

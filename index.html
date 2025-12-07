@@ -9,12 +9,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdfcfb;
-      color: #333;
-      padding: 20px;
-      position: relative;
-      overflow-x: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #faf9f6; /* fallback */
+    background-image: url('wallpaper.jpg');
+    background-repeat: repeat;
+    background-size: auto; /* keeps texture natural */
+    color: #333;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
     }
     header {
       text-align: center;
@@ -212,12 +217,13 @@
       pointer-events: all;
     }
     /* Fixed positions */
-    .blog-wrapper:nth-child(1) { top: 40px; left: 60px; }
-    .blog-wrapper:nth-child(2) { top: 180px; left: 340px; }
-    .blog-wrapper:nth-child(3) { top: 540px; left: 120px; }
-    .blog-wrapper:nth-child(4) { top: 860px; left: 400px; }
-    .blog-wrapper:nth-child(5) { top: 1180px; left: 200px; } 
-    .blog-wrapper:nth-child(7) { top: 1400px; left: 500px; }
+    .blog-wrapper:nth-child(1) { top: 160px; left: 60px; }
+    .blog-wrapper:nth-child(2) { top: 150px; right: 260px; }
+    .blog-wrapper:nth-child(3) { top: 145px; right: 700px; }
+    .blog-wrapper:nth-child(4) { top: 550px; right: 220px; }
+    .blog-wrapper:nth-child(5) { top: 580px; left: 140px; }
+    .blog-wrapper:nth-child(6) { top: 580px; left: 550px; }
+    .blog-wrapper:nth-child(7) { top: 1005px; left: 500px; }
   </style>
 </head>
 <body>
