@@ -2,442 +2,352 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Archita Jaiswal Blogs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My 17th birthday - Archita Jaiswal Blogs</title>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+
   <style>
     body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #faf9f6; /* fallback */
-    background-image: url('wallpaper.jpg');
-    background-repeat: repeat;
-    background-size: auto; /* keeps texture natural */
-    color: #333;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
-}
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfcfb;
+      color: #333;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-    
     header {
       text-align: center;
-      margin-bottom: 40px;
-      position: relative;
+      margin-bottom: 30px;
     }
-    .top-links {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .top-links a {
+
+    h1 {
       font-family: 'Shadows Into Light', cursive;
-      font-size: 1.2em;
-      text-decoration: none;
-      color: black;
+      font-size: 3em;
+      margin-bottom: 5px;
     }
-    .top-links a:hover {
+
+    .date-line {
+      font-family: 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 0.95em;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .black-text {
+      color: black;
+      font-weight: bold;
+    }
+
+    .page-container {
+      display: flex;
+      gap: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .separator {
+      width: 2px;
+      background-color: #ccc;
+    }
+
+    .content-area {
+      flex: 3;
+      font-size: 1.1em;
+      line-height: 1.6em;
+      margin-bottom: 60px;
+    }
+
+    .photos-section {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .polaroid {
+      width: 260px;
+      background: white;
+      border: 2px solid black;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      transform: rotate(var(--angle, 0deg));
+      transition: transform 0.3s ease;
+    }
+
+    .polaroid:hover {
+      transform: translate(-10px, -10px);
+      box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 180px; 
+      object-fit: cover;
+      object-position: top center;  
+      display: block;
+    }
+
+    .polaroid-date {
+      font-size: 0.85em;
+      padding: 10px 10px 5px;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: #555;
+    }
+
+    .suggested {
+      flex: 1;
+      padding-left: 20px;
+    }
+
+    .suggested h3 {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1.8em;
+      border-bottom: 2px solid black;
+      padding-bottom: 6px;
+      margin-bottom: 15px;
+    }
+
+    .suggested-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .suggested-list li {
+      margin: 12px 0;
+    }
+
+    .suggested-list a {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1.3em;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .suggested-list a:hover {
       text-decoration: underline;
     }
-    .search-container {
-      position: relative;
-    }
-    .search-container input {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1em;
-      padding: 5px 30px 5px 8px;
-      border: 2px solid black;
-      outline: none;
-      border-radius: 5px;
-    }
-    .search-container .icon {
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 16px;
-      height: 16px;
-    }
-    .search-results {
-      position: absolute;
-      top: 35px;
-      left: 0;
+
+    /* COMMENT SECTION STYLING */
+    #commentBox {
       width: 100%;
-      background: white;
+      height: 100px;
+      padding: 10px;
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 16px;
+      margin-top: 40px;
       border: 1px solid #ccc;
-      border-radius: 5px;
-      max-height: 150px;
-      overflow-y: auto;
-      display: none;
-      z-index: 10;
+      border-radius: 6px;
+      resize: vertical;
     }
-    .search-results div {
-      padding: 5px 8px;
+
+    #submitBtn {
+      margin-top: 10px;
+      padding: 8px 15px;
+      font-size: 16px;
+      font-family: 'Shadows Into Light', cursive;
       cursor: pointer;
-      font-family: 'Shadows Into Light', cursive;
+      border-radius: 6px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      transition: background 0.2s ease;
     }
-    .search-results div:hover {
-      background: #f0f0f0;
+
+    #submitBtn:hover {
+      background-color: #555;
     }
-    .blog-title {
-      font-size: 3em;
+
+    .comment {
+      background: #f4f4f4;
       font-family: 'Shadows Into Light', cursive;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
       display: flex;
-      justify-content: center;
       align-items: center;
       gap: 10px;
     }
-    .black-box {
-      background-color: black;
+
+    .initial-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #333;
       color: white;
-      padding: 5px 10px;
-      font-family: 'Noto Sans', sans-serif;
-      font-weight: 100;
-      font-size: 1.2em;
-      text-transform: uppercase;
-      width: fit-content;
-    }
-    .torn-image {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      transform: rotate(-3deg) scale(1.3);
-      box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
-      clip-path: polygon(5% 0%, 95% 0%, 100% 20%, 95% 100%, 5% 100%, 0% 80%);
-      margin-right: 15px;
-      margin-left: -10px;
-    }
-    .blog-grid {
-      position: relative;
-      height: 1900px; /* extended to fit 5 blogs */
-    }
-    .blog-wrapper {
-      position: absolute;
-      width: 260px;
-      height: 310px;
-    }
-     
-    .blog-wrapper:nth-child(6) { 
-      top: 1500px;
-      left: 100px;
-    } /* Position for FEAR blog */
-
-    .shadow-box {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 260px;
-      height: 310px;
-      background-color: black;
-      border: 4px solid black;
-      z-index: 1;
-      transition: transform 0.3s ease;
-    }
-    .blog-post {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 260px;
-      height: 310px;
-      background: white;
-      border: 4px solid black;
-      text-decoration: none;
-      color: inherit;
-      z-index: 2;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
       align-items: center;
-      overflow: visible;
-      transition: transform 0.3s ease;
-    }
-    .blog-post:hover {
-      transform: translate(-12px, -12px);
-    }
-    .blog-post:hover ~ .shadow-box {
-      transform: translate(8px, 8px);
-    }
-    .post-image {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      background-color: #000;
-    }
-    .post-content {
-      padding: 10px 12px 5px;
-      text-align: center;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
       justify-content: center;
-      background: white;
+      font-weight: bold;
+    }
+
+    .delete-btn {
+      margin-left: auto;
+      cursor: pointer;
+      background: none;
       border: none;
-      z-index: 3;
-      transition: transform 0.3s ease, scale 0.3s ease, border 0.3s ease;
+      font-size: 18px;
     }
-    .blog-post:hover .post-content {
-      transform: translate(-8px, -20px) scale(0.9);
-      border: 2px solid black;
-    }
-    .post-title {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.2em;
-      margin: 0;
-    }
-    .post-date {
-      margin-top: 5px;
-      font-size: 0.85em;
-      color: #555;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    footer {
-      text-align: center;
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #aaa;
-    }
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 100vw;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .overlay.show {
-      opacity: 1;
-      pointer-events: all;
-    }
-    /* Fixed positions */
-    .blog-wrapper:nth-child(1) { top: 160px; left: 60px; }
-    .blog-wrapper:nth-child(2) { top: 150px; right: 260px; }
-    .blog-wrapper:nth-child(3) { top: 145px; right: 700px; }
-    .blog-wrapper:nth-child(4) { top: 550px; right: 220px; }
-    .blog-wrapper:nth-child(5) { top: 580px; left: 140px; }
-    .blog-wrapper:nth-child(6) { top: 580px; left: 550px; }
-    .blog-wrapper:nth-child(7) { top: 1005px; left: 500px; }
- 
-.social-icons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* Logos style */
-.social-icons img {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.social-icons img:hover {
-  transform: scale(1.2);
-}
-
-/* Tooltip for Google */
-.google-logo {
-  position: relative;
-  display: inline-block;
-}
-
-.google-logo:hover::after {
-  content: attr(data-email);
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #333;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8em;
-  white-space: nowrap;
-  z-index: 10;
-}
-</style>
+  </style>
 </head>
 <body>
-  <div class="overlay" id="overlay"></div>
-  
   <header>
-    <div class="top-links">
-      <a href="about.html">ABOUT</a>
-      <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search blogs..." />
-        <span class="icon">
-          <!-- Solid black SVG magnifying glass -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zm-5.242 1.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
-          </svg>
-        </span>
-        <div class="search-results" id="searchResults"></div>
-      </div>
-    </div>
-    
-    <div class="blog-title">
-      <img src="new pfp.jpg" alt="Profile" class="torn-image" />
-      <span style="font-family: 'Shadows Into Light', cursive;">Archita Jaiswal</span>
-      <span class="black-box">BLOGS</span>
-    </div>
+    <h1>My 17th birthday</h1>
+    <p class="date-line"><span class="black-text">BLOGS</span> by <span class="black-text">ARCHITA JAISWAL</span> – 19 October 2023</p>
   </header>
-  
-  <main class="blog-grid">
-    <!-- Blog Post: My 17th Birthday -->
-    <div class="blog-wrapper">
-      <a href="birthday.html" class="blog-post">
-        <img src="17birthday.jpg" class="post-image" alt="My 17th Birthday image" />
-        <div class="post-content">
-          <h2 class="post-title">My 17th Birthday</h2>
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 19 October 2023</p>
-        </div>
-      </a>
-      <div class="shadow-box"></div>
-    </div>
-    
-    <!-- Blog Post: Fresh Start -->
-    <div class="blog-wrapper">
-      <a href="fresh-start.html" class="blog-post">
-        <img src="freshstartpic.jpg" class="post-image" alt="Fresh Start image" />
-        <div class="post-content">
-          <h2 class="post-title">Fresh Start</h2>
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 12 August 2025</p>
-        </div>
-      </a>
-      <div class="shadow-box"></div>
-    </div>
-    
-    <!-- Blog Post: Life as army kid -->
-    <div class="blog-wrapper">
-      <a href="life-as-army-kid.html" class="blog-post">
-        <img src="armykid1.jpg" class="post-image" alt="Life as army kid image" />
-        <div class="post-content">
-          <h2 class="post-title">Life as army kid</h2>
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 12 April 2025</p>
-        </div>
-      </a>
-      <div class="shadow-box"></div>
-    </div>
-    
-    <!-- Blog Post: LAST -->
-    <div class="blog-wrapper">
-      <a href="last.html" class="blog-post">
-        <img src="scribbles2.jpg" class="post-image" alt="Last blog image" />
-        <div class="post-content">
-          <h2 class="post-title">LASTS</h2>
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 15 April 2025</p>
-        </div>
-      </a>
-      <div class="shadow-box"></div>
-    </div>
 
-    <!-- Blog Post: The Shift blog -->
-    <div class="blog-wrapper">
-      <a href="new.html" class="blog-post">
-        <img src="new.jpg" class="post-image" alt="Random image" />
-        <div class="post-content">
-          <h2 class="post-title">The Shift</h2>
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 13 September 2025</p>
+  <div class="page-container">
+    <article class="content-area">
+      <p>SEVENTEEN! , i know right , i was equally excited as any one would be on their seventeenth . I didn't slept the night before my birthday , thinking about all of it , thinking of the dress i bought , a bodycon dress , as i always dreamt of , me and my frnds in a aesthetic cafe . FIRST TIME EVER IN LIFE cuz before this time i always use to keep it small , just with my family members . i ordered my favourite --chocolate cake ! , YUMMM!</p>
+
+<p>we ate red sauce pastas , we gossiped and we laughed all together . Also i didn't told u about the best part -- PRESENTS! So, i got a very cute sipper as a gift and an aesthetic mug . We ended our celebration with mug of cold coffee and laughters .I had too much fun with my girlies. The birthday was worthy remembering!</p>
+
+      <section class="photos-section">
+        <div class="polaroid" style="--angle: -2deg;">
+          <img src="birthday 17.jpg" alt="Birthday celebration" />
+          <div class="polaroid-date">18.10.2023</div>
         </div>
-      </a>
-      <div class="shadow-box"></div>
-    </div>
+      </section>
 
-        <!-- Blog Post: FEAR -->
-    <div class="blog-wrapper">
-      <a href="fear.html" class="blog-post">
-        <img src="download.jpg" class="post-image" alt="Fear blog image" />
-        <div class="post-content">
-          <h2 class="post-title">FEAR</h2>
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 20 September 2025</p>
-        </div>
-      </a>
-      <div class="shadow-box"></div>
-    </div>
+       <!-- COMMENT SECTION -->
+      <textarea id="commentBox" placeholder="Write your comment..."></textarea>
+      <button id="submitBtn" onclick="postComment()">Submit</button>
+      <div id="commentsList"></div>
+    </article>
 
+    <div class="separator"></div>
 
+    <aside class="suggested">
+      <h3>Suggested Blogs</h3>
+      <ul class="suggested-list">
+        <li><a href="scribbles.html">Scribbles and Doodles</a></li>
+        <li><a href="date.html">LOVE NOWADAYS</a></li>
+        <li><a href="life-as-army-kid.html">Life as an Army Kid</a></li>
+        <li><a href="last.html">Lasts</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </aside>
+  </div>
 
-        <!-- Blog Post: LOVE NOWADAYS -->
-    <div class="blog-wrapper">
-      <a href="date.html" class="blog-post">
-        <img src="date0.jpg" class="post-image" alt="date image" />
-        <div class="post-content">
-          <h2 class="post-title">LOVE NOWADAYS</h2>
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 05 December 2025</p>
-        </div>
-      </a>
-      <div class="shadow-box"></div>
-    </div>
- 
-    <div class="social-icons">
-  <!-- Google Logo -->
-  <a href="#" class="google-logo" data-email="architajaiswal6081@gmail.com">
-    <img src="logo3.png" alt="Google Login" />
-  </a>
-  
-  <!-- Instagram Logo -->
-  <a href="https://www.instagram.com/it_me_archie" target="_blank" class="instagram-logo">
-    <img src="download.png" alt="Instagram" />
-  </a>
-</div>
+  <!-- FIREBASE SDKS -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 
-  </main>
-  
-  <footer>
-    <p>© 2025 Archita Jaiswal. All rights reserved.</p>
-  </footer>
-  
   <script>
-    const blogs = [
-      { title: "My 17th Birthday", url: "birthday.html" },
-      { title: "Fresh Start", url: "fresh-start.html" },
-      { title: "Life as army kid", url: "life-as-army-kid.html" },
-      { title: "LASTS", url: "last.html" },
-      { title: "The Shift", url: "new.html" },
-      { title: "Scribbles and Doodles", url: "scribbles-doodles.html" },
-      { title: "Goodbye School", url: "goodbye-school.html" },
-      { title: "LOVE NOWADAYS", url: "date.html" },
-      { title: "FEAR", url: "fear.html" },
-    ];
-    
-    const searchInput = document.getElementById("searchInput");
-    const searchResults = document.getElementById("searchResults");
-    
-    searchInput.addEventListener("input", () => {
-      const query = searchInput.value.toLowerCase();
-      searchResults.innerHTML = "";
-      
-      if (query) {
-        const matches = blogs.filter(blog => blog.title.toLowerCase().includes(query));
-        matches.forEach(match => {
-          const div = document.createElement("div");
-          div.textContent = match.title;
-          div.onclick = () => window.location.href = match.url;
-          searchResults.appendChild(div);
-        });
-        searchResults.style.display = matches.length ? "block" : "none";
+    const BLOG_ID = "birthday";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
+      authDomain: "comment-123.firebaseapp.com",
+      projectId: "comment-123",
+      storageBucket: "comment-123.firebasestorage.app",
+      messagingSenderId: "1094221233460",
+      appId: "1:1094221233460:web:a149795852cdfe0908f961",
+      measurementId: "G-N88Z8M65Q1"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+    let currentUser = null;
+
+    auth.onAuthStateChanged(user => {
+      if(user){
+        currentUser = user;
+        renderComments();
       } else {
-        searchResults.style.display = "none";
+        currentUser = null;
       }
     });
-    
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".search-container")) {
-        searchResults.style.display = "none";
+
+    function signIn() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider).catch(err => alert(err.message));
+    }
+
+    function postComment() {
+      const commentText = document.getElementById("commentBox").value;
+      if(!currentUser){
+        alert("Please sign in first!");
+        signIn();
+        return;
       }
+      if(commentText.trim() === ""){
+        alert("Please write something!");
+        return;
+      }
+      db.collection("blogs")
+  .doc(BLOG_ID)
+  .collection("comments")
+  .orderBy("time", "desc")
+  .onSnapshot(snapshot => {
+    let html = "";
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const initials = data.userEmail.charAt(0).toUpperCase();
+      html += `
+        <div class="comment">
+          <span class="user-initials" data-email="${data.userEmail}">${initials}</span>
+          ${data.text}
+        </div>
+      `;
     });
+    document.getElementById("commentsList").innerHTML = html;
+  });
+
+      db.collection("blogs")
+        .doc(BLOG_ID)
+        .collection("comments")
+        .add({
+          text: commentText,
+          time: Date.now(),
+          userId: currentUser.uid,
+          displayName: currentUser.displayName
+        });
+      document.getElementById("commentBox").value = "";
+    }
+
+    function renderComments(){
+      db.collection("blogs")
+        .doc(BLOG_ID)
+        .collection("comments")
+        .orderBy("time", "desc")
+        .onSnapshot(snapshot => {
+          let html = "";
+          snapshot.forEach(doc => {
+            const data = doc.data();
+            const initials = data.displayName ? data.displayName[0].toUpperCase() : "?";
+            const canDelete = currentUser && currentUser.uid === data.userId;
+            html += `
+              <div class="comment">
+                <div class="initial-circle">${initials}</div>
+                <span>${data.text}</span>
+                ${canDelete ? `<button class="delete-btn" onclick="deleteComment('${doc.id}')">🗑️</button>` : ""}
+              </div>
+            `;
+          });
+          document.getElementById("commentsList").innerHTML = html;
+        });
+    }
+
+    function deleteComment(commentId){
+      if(confirm("Are you sure you want to delete this comment?")){
+        db.collection("blogs")
+          .doc(BLOG_ID)
+          .collection("comments")
+          .doc(commentId)
+          .delete();
+      }
+    }
   </script>
 </body>
 </html>
-
 
 
 
