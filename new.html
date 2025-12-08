@@ -303,69 +303,63 @@
     }
 
     function postComment() {
-      const commentText = document.getElementById("commentBox").value;
-      if(!currentUser){
-        alert("Please sign in first!");
-        signIn();
-        return;
-      }
-      if(commentText.trim() === ""){
-        alert("Please write something!");
-        return;
-      }
-      db.collection("blogs")
-  .doc(BLOG_ID)
-  .collection("comments")
-  .orderBy("time", "desc")
-  .onSnapshot(snapshot => {
-    let html = "";
-    snapshot.forEach(doc => {
-      const data = doc.data();
-      const initials = data.userEmail.charAt(0).toUpperCase();
-      html += `
-        <div class="comment">
-          <span class="user-initials" data-email="${data.userEmail}">${initials}</span>
-          ${data.text}
-        </div>
-      `;
-    });
-    document.getElementById("commentsList").innerHTML = html;
-  });
+  const commentText = document.getElementById("commentBox").value;
 
-      db.collection("blogs")
-        .doc(BLOG_ID)
-        .collection("comments")
-        .add({
-          text: commentText,
-          time: Date.now(),
-          userId: currentUser.uid,
-          displayName: currentUser.displayName
-        });
-      document.getElementById("commentBox").value = "";
-    }
+  if (!currentUser) {
+    alert("Please sign in first!");
+    signIn();
+    return;
+  }
+
+  if (commentText.trim() === "") {
+    alert("Please write something!");
+    return;
+  }
+
+  db.collection("blogs")
+    .doc(BLOG_ID)
+    .collection("comments")
+    .add({
+      text: commentText,
+      time: Date.now(),
+      userId: currentUser.uid,
+      displayName: currentUser.displayName,
+      userEmail: currentUser.email   // ⭐ IMPORTANT FIX
+    });
+
+  document.getElementById("commentBox").value = "";
+}
+
 
     function renderComments(){
-      db.collection("blogs")
-        .doc(BLOG_ID)
-        .collection("comments")
-        .orderBy("time", "desc")
-        .onSnapshot(snapshot => {
-          let html = "";
-          snapshot.forEach(doc => {
-            const data = doc.data();
-            const initials = data.displayName ? data.displayName[0].toUpperCase() : "?";
-            const canDelete = currentUser && currentUser.uid === data.userId;
-            html += `
-              <div class="comment">
-                <div class="initial-circle">${initials}</div>
-                <span>${data.text}</span>
-                ${canDelete ? `<button class="delete-btn" onclick="deleteComment('${doc.id}')">🗑️</button>` : ""}
-              </div>
-            `;
-          });
-          document.getElementById("commentsList").innerHTML = html;
-        });
-    }
+  db.collection("blogs")
+    .doc(BLOG_ID)
+    .collection("comments")
+    .orderBy("time", "desc")
+    .onSnapshot(snapshot => {
+      let html = "";
+      snapshot.forEach(doc => {
+        const data = doc.data();
+
+        const email = data.userEmail ? data.userEmail : "No email";
+        const initials = email.charAt(0).toUpperCase();
+
+        const canDelete = currentUser && currentUser.uid === data.userId;
+
+        html += `
+          <div class="comment">
+            <div class="initial-circle" title="${email}">
+              ${initials}
+            </div>
+            <span>${data.text}</span>
+            ${canDelete ? `<button class="delete-btn" onclick="deleteComment('${doc.id}')">🗑️</button>` : ""}
+          </div>
+        `;
+      });
+
+      document.getElementById("commentsList").innerHTML = html;
+    });
+}
 
     function deleteComment(commentId){
       if(confirm("Are you sure you want to delete this comment?")){
