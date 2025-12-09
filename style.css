@@ -1,0 +1,41 @@
+/* GENERAL RESPONSIVE FIXES */
+* {
+  box-sizing: border-box;
+}
+
+/* Make the grid responsive */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  position: static !important; /* remove fixed height issues */
+  height: auto;
+  padding-bottom: 50px;
+}
+
+/* Force blog-wrapper to behave normally inside grid */
+.blog-wrapper {
+  position: static !important;
+  width: 260px;
+  height: 310px;
+}
+
+/* On mobile: keep 2 columns */
+@media (max-width: 600px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* On very small phones (like iPhone SE) */
+@media (max-width: 420px) {
+  .blog-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .blog-wrapper {
+    width: 100%;
+  }
+}
