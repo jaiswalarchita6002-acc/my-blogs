@@ -204,7 +204,7 @@
 }
 
 /* Tooltip */
-.user-initials:hover::after {
+.user-initials:hover::after{
   content: attr(data-email);
   position: absolute;
   top: -30px;
@@ -355,7 +355,7 @@
 
         html += `
           <div class="comment">
-            <div class="initial-circle" title="${email}">
+            <div class="initial-circle" data-email="${email}">
               ${initials}
             </div>
             <span>${data.text}</span>
