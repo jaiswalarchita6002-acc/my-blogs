@@ -4,33 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Archita Jaiswal Blogs</title>
-
+  
+  
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
-
   <style>
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #faf9f6;
-      background-image: url('wallpaper.jpg');
-      background-repeat: repeat;
-      color: #333;
-      padding: 20px;
-      overflow-x: hidden;
-    }
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #faf9f6; /* fallback */
+    background-image: url('wallpaper.jpg');
+    background-repeat: repeat;
+    background-size: auto; /* keeps texture natural */
+    color: #333;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
 
+    
     header {
       text-align: center;
       margin-bottom: 40px;
       position: relative;
     }
-
-    /* Top bar */
     .top-links {
       position: absolute;
       top: 10px;
@@ -38,358 +34,434 @@
       display: flex;
       align-items: center;
       gap: 15px;
-      flex-wrap: wrap;
     }
-
     .top-links a {
       font-family: 'Shadows Into Light', cursive;
       font-size: 1.2em;
       text-decoration: none;
       color: black;
     }
-
+    .top-links a:hover {
+      text-decoration: underline;
+    }
     .search-container {
       position: relative;
     }
-
     .search-container input {
       font-family: 'Shadows Into Light', cursive;
       font-size: 1em;
-      padding: 6px 30px 6px 8px;
+      padding: 5px 30px 5px 8px;
       border: 2px solid black;
+      outline: none;
       border-radius: 5px;
-      width: 160px;
     }
-
-    .icon{
-      position:absolute;
-      right:8px;
-      top:50%;
-      transform:translateY(-50%);
+    .search-container .icon {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
     }
-
-    .search-results{
-      position:absolute;
-      top:35px;
-      left:0;
-      width:100%;
-      background:white;
-      border:1px solid #ccc;
-      display:none;
-      z-index:10;
+    .search-results {
+      position: absolute;
+      top: 35px;
+      left: 0;
+      width: 100%;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      max-height: 150px;
+      overflow-y: auto;
+      display: none;
+      z-index: 10;
     }
-
-    /* Title */
-    .blog-title{
-      font-size:3em;
-      font-family:'Shadows Into Light',cursive;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
+    .search-results div {
+      padding: 5px 8px;
+      cursor: pointer;
+      font-family: 'Shadows Into Light', cursive;
     }
-
-    .torn-image{
-      width:55px;
-      height:55px;
-      object-fit:cover;
+    .search-results div:hover {
+      background: #f0f0f0;
     }
-
-    .black-box{
-      background:black;
-      color:white;
-      padding:5px 10px;
-      font-size:1.1em;
+    .blog-title {
+      font-size: 3em;
+      font-family: 'Shadows Into Light', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
-
-    /* Blog Grid */
-    .blog-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap:40px;
-      max-width:1200px;
-      margin:auto;
-      padding:20px 0;
+    .black-box {
+      background-color: black;
+      color: white;
+      padding: 5px 10px;
+      font-family: 'Noto Sans', sans-serif;
+      font-weight: 100;
+      font-size: 1.2em;
+      text-transform: uppercase;
+      width: fit-content;
     }
-
-    .blog-wrapper{
-      position:relative;
-      width:100%;
-      height:310px;
+    .torn-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      transform: rotate(-3deg) scale(1.3);
+      box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+      clip-path: polygon(5% 0%, 95% 0%, 100% 20%, 95% 100%, 5% 100%, 0% 80%);
+      margin-right: 15px;
+      margin-left: -10px;
     }
-
-    .shadow-box{
-      position:absolute;
-      inset:0;
-      background:black;
-      z-index:1;
-      transform:translate(8px,8px);
+    .blog-grid {
+      position: relative;
+      height: 1900px; /* extended to fit 5 blogs */
     }
-
-    .blog-post{
-      position:absolute;
-      inset:0;
-      background:white;
-      border:3px solid black;
-      z-index:2;
-      text-decoration:none;
-      color:inherit;
-      display:flex;
-      flex-direction:column;
-      transition:0.3s;
+    .blog-wrapper {
+      position: absolute;
+      width: 260px;
+      height: 310px;
     }
+     
+    .blog-wrapper:nth-child(6) { 
+      top: 1500px;
+      left: 100px;
+    } /* Position for FEAR blog */
 
-    .blog-post:hover{
-      transform:translate(-8px,-8px);
+    .shadow-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 310px;
+      background-color: black;
+      border: 4px solid black;
+      z-index: 1;
+      transition: transform 0.3s ease;
     }
-
-    .post-image{
-      width:100%;
-      height:200px;
-      object-fit:cover;
+    .blog-post {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 310px;
+      background: white;
+      border: 4px solid black;
+      text-decoration: none;
+      color: inherit;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      overflow: visible;
+      transition: transform 0.3s ease;
     }
-
-    .post-content{
-      padding:10px;
-      text-align:center;
-      flex:1;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
+    .blog-post:hover {
+      transform: translate(-12px, -12px);
     }
-
-    .post-title{
-      font-family:'Shadows Into Light',cursive;
-      font-size:1.2em;
+    .blog-post:hover ~ .shadow-box {
+      transform: translate(8px, 8px);
     }
-
-    .post-date{
-      font-size:0.8em;
-      color:#555;
-      margin-top:5px;
+    .post-image {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      background-color: #000;
     }
-
-    /* Social */
-    .social-icons{
-      grid-column:1/-1;
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      margin-top:30px;
+    .post-content {
+      padding: 10px 12px 5px;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: white;
+      border: none;
+      z-index: 3;
+      transition: transform 0.3s ease, scale 0.3s ease, border 0.3s ease;
     }
-
-    .social-icons img{
-      width:38px;
-      height:38px;
+    .blog-post:hover .post-content {
+      transform: translate(-8px, -20px) scale(0.9);
+      border: 2px solid black;
     }
-
-    footer{
-      text-align:center;
-      margin-top:50px;
-      color:#aaa;
-      font-size:0.9em;
+    .post-title {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1.2em;
+      margin: 0;
     }
-
-    /* ================= MOBILE ================= */
-
-    @media(max-width:768px){
-
-      body{
-        padding:10px;
-      }
-
-      .top-links{
-        position:static;
-        justify-content:center;
-        margin-bottom:15px;
-      }
-
-      .search-container input{
-        width:130px;
-      }
-
-      .blog-title{
-        font-size:2.2em;
-      }
-
-      .torn-image{
-        width:45px;
-        height:45px;
-      }
-
-      .post-image{
-        height:170px;
-      }
-
+    .post-date {
+      margin-top: 5px;
+      font-size: 0.85em;
+      color: #555;
+      font-family: 'Segoe UI', sans-serif;
     }
-
-    @media(max-width:480px){
-
-      .blog-title{
-        font-size:1.8em;
-        text-align:center;
-      }
-
-      .top-links{
-        flex-direction:column;
-        gap:8px;
-      }
-
-      .blog-grid{
-        gap:25px;
-      }
-
-      .blog-wrapper{
-        height:280px;
-      }
-
-      .post-image{
-        height:150px;
-      }
-
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #aaa;
     }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+ 
+   /* Fixed positions */
+    .blog-wrapper:nth-child(1) { top: 160px; left: 60px; }
+    .blog-wrapper:nth-child(2) { top: 150px; right: 260px; }
+    .blog-wrapper:nth-child(3) { top: 145px; right: 700px; }
+    .blog-wrapper:nth-child(4) { top: 550px; right: 220px; }
+    .blog-wrapper:nth-child(5) { top: 580px; left: 140px; }
+    .blog-wrapper:nth-child(6) { top: 580px; left: 550px; }
+    .blog-wrapper:nth-child(7) { top: 1005px; left: 500px; }
+    .blog-wrapper:nth-child(8) { top: 1005px; left: 70px; }
+    .blog-wrapper:nth-child(9) { top: 1005px; left: 900px; }
 
-  </style>
+.social-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Logos style */
+.social-icons img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* Tooltip for Google */
+.google-logo {
+  position: relative;
+  display: inline-block;
+}
+
+.google-logo:hover::after {
+  content: attr(data-email);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  z-index: 10;
+}
+</style>
 </head>
 <body>
-
-<header>
-
-  <div class="top-links">
-    <a href="about.html">ABOUT</a>
-
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search blogs...">
-      <span class="icon">🔍</span>
-      <div class="search-results" id="searchResults"></div>
+  <div class="overlay" id="overlay"></div>
+  
+  <header>
+    <div class="top-links">
+      <a href="about.html">ABOUT</a>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search blogs..." />
+        <span class="icon">
+          <!-- Solid black SVG magnifying glass -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zm-5.242 1.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+          </svg>
+        </span>
+        <div class="search-results" id="searchResults"></div>
+      </div>
     </div>
-  </div>
+    
+    <div class="blog-title">
+      <img src="new pfp.jpg" alt="Profile" class="torn-image" />
+      <span style="font-family: 'Shadows Into Light', cursive;">Archita Jaiswal</span>
+      <span class="black-box">BLOGS</span>
+    </div>
+  </header>
+  
+  <main class="blog-grid">
+    <!-- Blog Post: My 17th Birthday -->
+    <div class="blog-wrapper">
+      <a href="birthday.html" class="blog-post">
+        <img src="17birthday.jpg" class="post-image" alt="My 17th Birthday image" />
+        <div class="post-content">
+          <h2 class="post-title">My 17th Birthday</h2>
+          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 19 October 2023</p>
+        </div>
+      </a>
+      <div class="shadow-box"></div>
+    </div>
+    
+    <!-- Blog Post: Fresh Start -->
+    <div class="blog-wrapper">
+      <a href="fresh-start.html" class="blog-post">
+        <img src="freshstartpic.jpg" class="post-image" alt="Fresh Start image" />
+        <div class="post-content">
+          <h2 class="post-title">Fresh Start</h2>
+          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 12 August 2025</p>
+        </div>
+      </a>
+      <div class="shadow-box"></div>
+    </div>
+    
+    <!-- Blog Post: Life as army kid -->
+    <div class="blog-wrapper">
+      <a href="life-as-army-kid.html" class="blog-post">
+        <img src="armykid1.jpg" class="post-image" alt="Life as army kid image" />
+        <div class="post-content">
+          <h2 class="post-title">Life as army kid</h2>
+          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 12 April 2025</p>
+        </div>
+      </a>
+      <div class="shadow-box"></div>
+    </div>
+    
+    <!-- Blog Post: LAST -->
+    <div class="blog-wrapper">
+      <a href="last.html" class="blog-post">
+        <img src="scribbles2.jpg" class="post-image" alt="Last blog image" />
+        <div class="post-content">
+          <h2 class="post-title">LASTS</h2>
+          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 15 April 2025</p>
+        </div>
+      </a>
+      <div class="shadow-box"></div>
+    </div>
 
-  <div class="blog-title">
-    <img src="new pfp.jpg" class="torn-image">
-    <span>Archita Jaiswal</span>
-    <span class="black-box">BLOGS</span>
-  </div>
+    <!-- Blog Post: The Shift blog -->
+    <div class="blog-wrapper">
+      <a href="new.html" class="blog-post">
+        <img src="new.jpg" class="post-image" alt="Random image" />
+        <div class="post-content">
+          <h2 class="post-title">The Shift</h2>
+          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 13 September 2025</p>
+        </div>
+      </a>
+      <div class="shadow-box"></div>
+    </div>
 
-</header>
+        <!-- Blog Post: FEAR -->
+    <div class="blog-wrapper">
+      <a href="fear.html" class="blog-post">
+        <img src="download.jpg" class="post-image" alt="Fear blog image" />
+        <div class="post-content">
+          <h2 class="post-title">FEAR</h2>
+          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 20 September 2025</p>
+        </div>
+      </a>
+      <div class="shadow-box"></div>
+    </div>
 
-<main class="blog-grid">
+        <!-- Blog Post: what the hell MEN!!!-->
+    <div class="blog-wrapper">
+      <a href="MEN.html" class="blog-post">
+        <img src="MEN.jpg" class="post-image" alt="date image" />
+        <div class="post-content">
+          <h2 class="post-title">What the hell MEN!!!</h2>
+          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 12 January 2026</p>
+        </div>
+      </a>
+      <div class="shadow-box"></div>
+    </div>
 
-  <!-- Blog Cards -->
 
-  <div class="blog-wrapper">
-    <a href="birthday.html" class="blog-post">
-      <img src="17birthday.jpg" class="post-image">
-      <div class="post-content">
-        <h2 class="post-title">My 17th Birthday</h2>
-        <p class="post-date">19 October 2023</p>
-      </div>
-    </a>
-    <div class="shadow-box"></div>
-  </div>
+        <!-- Blog Post: LOVE NOWADAYS -->
+    <div class="blog-wrapper">
+      <a href="date.html" class="blog-post">
+        <img src="date0.jpg" class="post-image" alt="date image" />
+        <div class="post-content">
+          <h2 class="post-title">LOVE NOWADAYS</h2>
+          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 05 December 2025</p>
+        </div>
+      </a>
+      <div class="shadow-box"></div>
+    </div>
 
-  <div class="blog-wrapper">
-    <a href="fresh-start.html" class="blog-post">
-      <img src="freshstartpic.jpg" class="post-image">
-      <div class="post-content">
-        <h2 class="post-title">Fresh Start</h2>
-        <p class="post-date">12 August 2025</p>
-      </div>
-    </a>
-    <div class="shadow-box"></div>
-  </div>
+       <!-- Blog Post: College-mates or Critics? -->
+    <div class="blog-wrapper">
+      <a href="chaos.html" class="blog-post">
+        <img src="chaos.jpg" class="post-image" alt="chaos image" />
+        <div class="post-content">
+          <h2 class="post-title">College-mates or Critics?</h2>
+          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 08 January 2026</p>
+        </div>
+      </a>
+      <div class="shadow-box"></div>
+    </div>
+ 
+    <div class="social-icons">
+  <!-- Google Logo -->
+  <a href="#" class="google-logo" data-email="architajaiswal6081@gmail.com">
+    <img src="logo3.png" alt="Google Login" />
+  </a>
+  
+  <!-- Instagram Logo -->
+  <a href="https://www.instagram.com/it_me_archie" target="_blank" class="instagram-logo">
+    <img src="download.png" alt="Instagram" />
+  </a>
+</div>
 
-  <div class="blog-wrapper">
-    <a href="life-as-army-kid.html" class="blog-post">
-      <img src="armykid1.jpg" class="post-image">
-      <div class="post-content">
-        <h2 class="post-title">Life as Army Kid</h2>
-        <p class="post-date">12 April 2025</p>
-      </div>
-    </a>
-    <div class="shadow-box"></div>
-  </div>
-
-  <div class="blog-wrapper">
-    <a href="last.html" class="blog-post">
-      <img src="scribbles2.jpg" class="post-image">
-      <div class="post-content">
-        <h2 class="post-title">LASTS</h2>
-        <p class="post-date">15 April 2025</p>
-      </div>
-    </a>
-    <div class="shadow-box"></div>
-  </div>
-
-  <div class="blog-wrapper">
-    <a href="new.html" class="blog-post">
-      <img src="new.jpg" class="post-image">
-      <div class="post-content">
-        <h2 class="post-title">The Shift</h2>
-        <p class="post-date">13 September 2025</p>
-      </div>
-    </a>
-    <div class="shadow-box"></div>
-  </div>
-
-  <div class="social-icons">
-
-    <a href="#">
-      <img src="logo3.png">
-    </a>
-
-    <a href="https://www.instagram.com/it_me_archie" target="_blank">
-      <img src="download.png">
-    </a>
-
-  </div>
-
-</main>
-
-<footer>
-  © 2025 Archita Jaiswal. All rights reserved.
-</footer>
-
-<script>
-
-const blogs=[
-  {title:"My 17th Birthday",url:"birthday.html"},
-  {title:"Fresh Start",url:"fresh-start.html"},
-  {title:"Life as Army Kid",url:"life-as-army-kid.html"},
-  {title:"LASTS",url:"last.html"},
-  {title:"The Shift",url:"new.html"},
-  {title:"LOVE NOWADAYS",url:"date.html"},
-  {title:"FEAR",url:"fear.html"}
-];
-
-const input=document.getElementById("searchInput");
-const results=document.getElementById("searchResults");
-
-input.addEventListener("input",()=>{
-
-  const q=input.value.toLowerCase();
-  results.innerHTML="";
-
-  if(!q){
-    results.style.display="none";
-    return;
-  }
-
-  const matches=blogs.filter(b=>b.title.toLowerCase().includes(q));
-
-  matches.forEach(m=>{
-    const div=document.createElement("div");
-    div.textContent=m.title;
-    div.onclick=()=>location.href=m.url;
-    results.appendChild(div);
-  });
-
-  results.style.display=matches.length?"block":"none";
-});
-
-</script>
-
+  </main>
+  
+  <footer>
+    <p>© 2025 Archita Jaiswal. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    const blogs = [
+      { title: "My 17th Birthday", url: "birthday.html" },
+      { title: "Fresh Start", url: "fresh-start.html" },
+      { title: "Life as army kid", url: "life-as-army-kid.html" },
+      { title: "LASTS", url: "last.html" },
+      { title: "The Shift", url: "new.html" },
+      { title: "Scribbles and Doodles", url: "scribbles-doodles.html" },
+      { title: "Goodbye School", url: "goodbye-school.html" },
+      { title: "LOVE NOWADAYS", url: "date.html" },
+      { title: "FEAR", url: "fear.html" },
+    ];
+    
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+    
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+      searchResults.innerHTML = "";
+      
+      if (query) {
+        const matches = blogs.filter(blog => blog.title.toLowerCase().includes(query));
+        matches.forEach(match => {
+          const div = document.createElement("div");
+          div.textContent = match.title;
+          div.onclick = () => window.location.href = match.url;
+          searchResults.appendChild(div);
+        });
+        searchResults.style.display = matches.length ? "block" : "none";
+      } else {
+        searchResults.style.display = "none";
+      }
+    });
+    
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".search-container")) {
+        searchResults.style.display = "none";
+      }
+    });
+  </script>
 </body>
 </html>
-
