@@ -43,9 +43,8 @@
     .page-container {
       display: flex;
       gap: 40px;
-      max-width: 1000px;
-      margin: auto;
     }
+
 
     .separator {
       width: 2px;
@@ -185,7 +184,52 @@
       border: none;
       font-size: 18px;
     }
-    <style>
+
+     /* ========== MOBILE BLOG PAGE ========== */
+@media (max-width: 768px) {
+
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .page-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .suggested {
+    padding-left: 0;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+
+  .content-area {
+    font-size: 1em;
+  }
+
+  .polaroid {
+    width: 90%;
+  }
+
+  #commentBox {
+    font-size: 16px;
+  }
+
+  .comment {
+    flex-wrap: wrap;
+  }
+
+ }
+
+ <style>
 /* Circle for initials */
 .user-initials {
   display: inline-flex;
@@ -218,7 +262,6 @@
   white-space: nowrap;
   z-index: 10;
 }
-
 
   </style>
 </head>
@@ -355,7 +398,10 @@
 
         html += `
           <div class="comment">
-            <div class="initial-circle" title="${email}">
+            <div class="initial-circle" 
+     title="${email}"
+     onclick="alert('${email}')">
+
               ${initials}
             </div>
             <span>${data.text}</span>
@@ -365,7 +411,7 @@
       });
 
       document.getElementById("commentsList").innerHTML = html;
-    });
+    });4
 }
 
     function deleteComment(commentId){
