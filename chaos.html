@@ -355,8 +355,8 @@
 
         html += `
           <div class="comment">
-            <div class="initial-circle" data-email="${email}">
-              ${initials}
+            <div class="initial-circle" title="${email}">
+             ${initials}
             </div>
             <span>${data.text}</span>
             ${canDelete ? `<button class="delete-btn" onclick="deleteComment('${doc.id}')">🗑️</button>` : ""}
