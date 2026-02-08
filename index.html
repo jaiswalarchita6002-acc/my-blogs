@@ -270,6 +270,99 @@
   white-space: nowrap;
   z-index: 10;
 }
+
+  /* ============================
+   MOBILE RESPONSIVE FIX
+   ============================ */
+
+@media (max-width: 768px) {
+
+  /* Remove absolute layout */
+  .blog-grid {
+    position: static;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .blog-wrapper {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Card size fix */
+  .blog-post,
+  .shadow-box {
+    width: 100%;
+    height: auto;
+    min-height: 260px;
+  }
+
+  .post-image {
+    height: 160px;
+  }
+
+  /* Disable hover animation on mobile */
+  .blog-post:hover {
+    transform: none;
+  }
+
+  .blog-post:hover ~ .shadow-box {
+    transform: none;
+  }
+
+  .blog-post:hover .post-content {
+    transform: none;
+    border: none;
+  }
+
+  /* Header fixes */
+  .blog-title {
+    flex-direction: column;
+    font-size: 2em;
+    gap: 5px;
+  }
+
+  .torn-image {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+  }
+
+  /* Click email support */
+.google-logo.show-email::after {
+  content: attr(data-email);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  z-index: 10;
+}
+  
+
+
+  /* Top links stack */
+  .top-links {
+    position: static;
+    justify-content: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+
+  /* Social icons */
+  .social-icons {
+    margin-top: 30px;
+  }
+
 </style>
 </head>
 <body>
@@ -464,6 +557,25 @@
         searchResults.style.display = "none";
       }
     });
+
+     // Click to show email (mobile + desktop)
+
+const googleLogo = document.querySelector(".google-logo");
+
+if (googleLogo) {
+  googleLogo.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const email = this.getAttribute("data-email");
+
+    if (this.classList.contains("show-email")) {
+      this.classList.remove("show-email");
+    } else {
+      alert("Email: " + email);
+    }
+  });
+}
+    
   </script>
 </body>
 </html>
