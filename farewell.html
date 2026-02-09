@@ -10,13 +10,21 @@
 
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdfcfb;
-      color: #333;
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #faf9f6; /* fallback color */
+    
+    /* Fullscreen fixed background */
+    background-image: url('blogwallpaper4.png');
+    background-repeat: no-repeat;       /* don't tile */
+    background-size: cover;             /* cover entire screen */
+    background-position: center center; /* center the image */
+    background-attachment: fixed;       /* stay fixed when scrolling */
+    
+    color: #333;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
 
     header {
       text-align: center;
@@ -188,7 +196,14 @@
       border: none;
       font-size: 18px;
     }
-  
+    
+   .main-wrapper {
+  max-width: 1200px;   /* good for sidebar layout */
+  margin: 50px auto;
+  padding: 20px;
+}
+    
+
     <style>
 /* Circle for initials */
 .user-initials {
@@ -226,8 +241,12 @@
 
 
 </head>
-<body>
+   <body>
+
+<div class="main-wrapper">
+
   <header>
+
     <h1>Goodbye School !</h1>
     <p class="date-line"><span class="black-text">BLOGS</span> by <span class="black-text">ARCHITA JAISWAL</span> – 15 April 2025</p>
   </header>
@@ -384,6 +403,10 @@
           .delete();
       }
     }
-  </script>
+ </script>
+
+</div> <!-- end main-wrapper -->
+
 </body>
+  
 </html>

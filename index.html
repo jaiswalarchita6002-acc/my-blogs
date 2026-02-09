@@ -9,17 +9,24 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
   <style>
-    body {
+
+   body {
+    margin: 0; /* remove default browser margin */
+    min-height: 100vh; /* ensure full screen height */
     font-family: 'Segoe UI', sans-serif;
-    background-color: #faf9f6; /* fallback */
-    background-image: url('wallpaper.jpg');
-    background-repeat: repeat;
-    background-size: auto; /* keeps texture natural */
+
+    /* Fullscreen fixed background */
+    background-image: url('ok.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
     color: #333;
     padding: 20px;
-    position: relative;
     overflow-x: hidden;
 }
+
 
     
     header {
@@ -156,6 +163,8 @@
       overflow: visible;
       transition: transform 0.3s ease;
     }
+
+      
     .blog-post:hover {
       transform: translate(-12px, -12px);
     }
@@ -219,15 +228,15 @@
     }
  
    /* Fixed positions */
-    .blog-wrapper:nth-child(1) { top: 160px; left: 60px; }
-    .blog-wrapper:nth-child(2) { top: 150px; right: 260px; }
-    .blog-wrapper:nth-child(3) { top: 145px; right: 700px; }
-    .blog-wrapper:nth-child(4) { top: 550px; right: 220px; }
-    .blog-wrapper:nth-child(5) { top: 580px; left: 140px; }
-    .blog-wrapper:nth-child(6) { top: 580px; left: 550px; }
-    .blog-wrapper:nth-child(7) { top: 1005px; left: 500px; }
-    .blog-wrapper:nth-child(8) { top: 1005px; left: 70px; }
-    .blog-wrapper:nth-child(9) { top: 1005px; left: 900px; }
+    .blog-wrapper:nth-child(1) {transform: rotate(3deg); top: 160px; left: 60px; }
+    .blog-wrapper:nth-child(2) {transform: rotate(-2deg); top: 150px; right: 260px; }
+    .blog-wrapper:nth-child(3) {transform: rotate(-3deg); top: 145px; right: 700px; }
+    .blog-wrapper:nth-child(4) {transform: rotate(1deg);top: 550px; right: 220px; }
+    .blog-wrapper:nth-child(5) {transform: rotate(0deg); top: 580px; left: 140px; }
+    .blog-wrapper:nth-child(6) {transform: rotate(2deg); top: 580px; left: 550px; }
+    .blog-wrapper:nth-child(7) {transform: rotate(3deg); top: 1005px; left: 500px; }
+    .blog-wrapper:nth-child(8) {transform: rotate(-2deg); top: 1005px; left: 70px; }
+    .blog-wrapper:nth-child(9) {transform: rotate(3deg); top: 1005px; left: 900px; }
 
 .social-icons {
   display: flex;
@@ -268,7 +277,8 @@
   white-space: nowrap;
   z-index: 10;
 }
-</style>
+
+    </style>
 </head>
 <body>
   <div class="overlay" id="overlay"></div>
@@ -413,7 +423,7 @@
   
   <!-- Instagram Logo -->
   <a href="https://www.instagram.com/it_me_archie" target="_blank" class="instagram-logo">
-    <img src="download.png" alt="Instagram" />
+    <img src="instalogo1.png" alt="Instagram" />
   </a>
 </div>
 
@@ -434,6 +444,8 @@
       { title: "Goodbye School", url: "goodbye-school.html" },
       { title: "LOVE NOWADAYS", url: "date.html" },
       { title: "FEAR", url: "fear.html" },
+      { title: "What the hell MEN!!!", url: "MEN.html" },
+      { title: "College-mates or Critics?", url: "choas.html" }
     ];
     
     const searchInput = document.getElementById("searchInput");

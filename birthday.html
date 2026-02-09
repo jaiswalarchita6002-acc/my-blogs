@@ -13,13 +13,21 @@
 
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdfcfb;
-      color: #333;
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #faf9f6; /* fallback color */
+    
+    /* Fullscreen fixed background */
+    background-image: url('blogwallpaper4.png');
+    background-repeat: no-repeat;       /* don't tile */
+    background-size: cover;             /* cover entire screen */
+    background-position: center center; /* center the image */
+    background-attachment: fixed;       /* stay fixed when scrolling */
+    
+    color: #333;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
 
     header {
       text-align: center;
