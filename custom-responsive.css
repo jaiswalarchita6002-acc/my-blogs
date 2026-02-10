@@ -1,0 +1,44 @@
+/* =============================
+   MOBILE / SMALL SCREENS (like Android)
+   ============================= */
+@media (max-width: 480px) {
+  .page-container {
+    display: flex;
+    flex-direction: column; /* stack everything vertically */
+  }
+
+  /* Keep content-area first */
+  .content-area {
+    order: 1;
+  }
+
+  /* Comment box naturally comes after content */
+  #commentBox,
+  #submitBtn,
+  #commentsList {
+    order: 2;
+  }
+
+  /* Suggested blogs comes last */
+  .suggested {
+    order: 3;
+    padding-left: 0;       /* remove extra left padding on small screens */
+    margin-top: 20px;      /* spacing from comments */
+  }
+}
+
+/* =============================
+   SEMI-TRANSPARENT CENTERED HEADER
+   ============================= */
+header {
+  display: flex;                     /* use flex to center horizontally */
+  flex-direction: column;            /* stack h1 and date line vertically */
+  align-items: center;               /* center the whole box */
+  justify-content: center;           /* optional, vertical centering */
+  background-color: rgba(255, 255, 255, 0.8); /* semi-transparent */
+  padding: 20px 40px;                /* space around text */
+  border-radius: 10px;               /* soft corners */
+  margin: 20px auto;                 /* centers box horizontally on page */
+  max-width: 50%;                    /* prevents box from being too wide on mobile */
+  text-align: center;                 /* centers text inside box */
+}
