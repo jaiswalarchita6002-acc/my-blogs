@@ -27,21 +27,24 @@
     overflow-x: hidden;
 }
 
+       header {
+  text-align: center;
+  margin: 40px 0 60px;
+  position: relative;
+}
 
     
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-      position: relative;
-    }
+    
     .top-links {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+  position: absolute;
+  top: -25px; /* moved up */
+  right: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
     .top-links a {
       font-family: 'Shadows Into Light', cursive;
       font-size: 1.2em;
@@ -91,14 +94,17 @@
     .search-results div:hover {
       background: #f0f0f0;
     }
-    .blog-title {
-      font-size: 3em;
-      font-family: 'Shadows Into Light', cursive;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-    }
+    
+      .blog-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  margin-top: 40px; /* space from top links */
+}
+
+   
     .black-box {
       background-color: black;
       color: white;
@@ -109,30 +115,38 @@
       text-transform: uppercase;
       width: fit-content;
     }
+
     .torn-image {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      transform: rotate(-3deg) scale(1.3);
-      box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
-      clip-path: polygon(5% 0%, 95% 0%, 100% 20%, 95% 100%, 5% 100%, 0% 80%);
-      margin-right: 15px;
-      margin-left: -10px;
-    }
+  width: 90px;
+  height: 90px;
+
+  object-fit: cover;
+
+  transform: rotate(-3deg);
+
+  box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+
+  clip-path: polygon(5% 0%, 95% 0%, 100% 20%, 95% 100%, 5% 100%, 0% 80%);
+
+  display: block;
+  flex-shrink: 0; /* stops shrinking */
+}
+
+    
     .blog-grid {
-      position: relative;
-      height: 1900px; /* extended to fit 5 blogs */
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 90px;
+  padding: 60px 40px;
+  justify-items: center;
+}
+
     .blog-wrapper {
-      position: absolute;
-      width: 260px;
-      height: 310px;
-    }
-     
-    .blog-wrapper:nth-child(6) { 
-      top: 1500px;
-      left: 100px;
-    } /* Position for FEAR blog */
+  position: relative;
+  width: 260px;
+  height: 310px;
+}
+
 
     .shadow-box {
       position: absolute;
@@ -228,15 +242,16 @@
     }
  
    /* Fixed positions */
-    .blog-wrapper:nth-child(1) {transform: rotate(3deg); top: 160px; left: 60px; }
-    .blog-wrapper:nth-child(2) {transform: rotate(-2deg); top: 150px; right: 260px; }
-    .blog-wrapper:nth-child(3) {transform: rotate(-3deg); top: 145px; right: 700px; }
-    .blog-wrapper:nth-child(4) {transform: rotate(1deg);top: 550px; right: 220px; }
-    .blog-wrapper:nth-child(5) {transform: rotate(0deg); top: 580px; left: 140px; }
-    .blog-wrapper:nth-child(6) {transform: rotate(2deg); top: 580px; left: 550px; }
-    .blog-wrapper:nth-child(7) {transform: rotate(3deg); top: 1005px; left: 500px; }
-    .blog-wrapper:nth-child(8) {transform: rotate(-2deg); top: 1005px; left: 70px; }
-    .blog-wrapper:nth-child(9) {transform: rotate(3deg); top: 1005px; left: 900px; }
+    .blog-wrapper:nth-child(1) { transform: rotate(3deg); }
+.blog-wrapper:nth-child(2) { transform: rotate(-2deg); }
+.blog-wrapper:nth-child(3) { transform: rotate(-3deg); }
+.blog-wrapper:nth-child(4) { transform: rotate(1deg); }
+.blog-wrapper:nth-child(5) { transform: rotate(0deg); }
+.blog-wrapper:nth-child(6) { transform: rotate(2deg); }
+.blog-wrapper:nth-child(7) { transform: rotate(3deg); }
+.blog-wrapper:nth-child(8) { transform: rotate(-2deg); }
+.blog-wrapper:nth-child(9) { transform: rotate(3deg); }
+
 
 .social-icons {
   display: flex;
@@ -278,12 +293,60 @@
   z-index: 10;
 }
 
+      /* Header scaler */
+.header-scale {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Main header box */
+header {
+  width: fit-content;
+  transform-origin: top center;
+}
+
+/* Center title + icons vertically */
+
+/* Icons under title */
+.header-icons {
+  margin-top: 15px;
+}
+
+/* Responsive scaling */
+@media (max-width: 1200px) {
+  header { transform: scale(0.95); }
+}
+
+@media (max-width: 1000px) {
+  header { transform: scale(0.85); }
+}
+
+@media (max-width: 800px) {
+  header { transform: scale(0.75); }
+}
+
+/* Make header text big */
+
+.blog-title span {
+  font-size: 3rem;   /* Archita Jaiswal size */
+}
+
+/* BLOGS box size */
+.blog-title .black-box {
+  font-size: 3rem;
+  padding: 8px 16px;
+}
+
+
     </style>
 </head>
 <body>
   <div class="overlay" id="overlay"></div>
   
-  <header>
+  <div class="header-scale">
+<header>
+
     <div class="top-links">
       <a href="about.html">ABOUT</a>
       <div class="search-container">
@@ -303,7 +366,20 @@
       <span style="font-family: 'Shadows Into Light', cursive;">Archita Jaiswal</span>
       <span class="black-box">BLOGS</span>
     </div>
+
+     <div class="social-icons">
+  <!-- Google Logo -->
+  <a href="#" class="google-logo" data-email="architajaiswal6081@gmail.com">
+    <img src="logo3.png" alt="Google Login" />
+  </a>
+  
+  <!-- Instagram Logo -->
+  <a href="https://www.instagram.com/it_me_archie" target="_blank" class="instagram-logo">
+    <img src="instalogo1.png" alt="Instagram" />
+  </a>
+</div>
   </header>
+</div>
   
   <main class="blog-grid">
     <!-- Blog Post: My 17th Birthday -->
@@ -414,18 +490,6 @@
       </a>
       <div class="shadow-box"></div>
     </div>
- 
-    <div class="social-icons">
-  <!-- Google Logo -->
-  <a href="#" class="google-logo" data-email="architajaiswal6081@gmail.com">
-    <img src="logo3.png" alt="Google Login" />
-  </a>
-  
-  <!-- Instagram Logo -->
-  <a href="https://www.instagram.com/it_me_archie" target="_blank" class="instagram-logo">
-    <img src="instalogo1.png" alt="Instagram" />
-  </a>
-</div>
 
   </main>
   
