@@ -175,6 +175,34 @@
       padding-bottom: 30px;
       color: #aaa;
     }
+
+     .gmail-box-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .gmail-popup {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: black;
+    padding: 8px 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: 'ConsolaMono', monospace;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    z-index: 100;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+  }
+
+  /* Shows the box when we add the 'show' class via JS */
+  .gmail-popup.show {
+    display: block;
+  }
   </style>
 </head>
 <body>
@@ -188,22 +216,22 @@
           <div class="search-results" id="searchResults"></div>
         </div>
       </div>
-      
-      <div class="blog-title">
-        <img src="new pfp.jpg" alt="Profile" class="torn-image" />
-        <span class="site-title">Archita Jaiswal</span>
-        <span class="black-box">BLOGS</span>
-      </div>
-
       <div class="social-icons">
-  <a href="mailto:architajaiswal6081@gmail.com">
-    <img src="logo3.png" alt="Email Me" />
-  </a>
   
+  <div class="gmail-box-container">
+    <a href="javascript:void(0)" onclick="toggleGmail()" class="google-trigger">
+      <img src="logo3.png" alt="Google" />
+    </a>
+    <div id="gmailDisplay" class="gmail-popup">
+      architajaiswal6081@gmail.com
+    </div>
+  </div>
+
   <a href="https://www.instagram.com/it_me_archie" target="_blank">
     <img src="instalogo1.png" alt="Instagram" />
   </a>
 </div>
+      
     </header>
   </div>
   
@@ -344,6 +372,11 @@
         searchResults.style.display = "none";
       }
     });
+
+      function toggleGmail() {
+    const popup = document.getElementById("gmailDisplay");
+    popup.classList.toggle("show");
+  }
   </script>
 </body>
 </html>
