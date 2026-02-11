@@ -1,241 +1,187 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="header-frame.css">
   <link rel="stylesheet" href="custom-responsive.css" />
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LAST - Archita Jaiswal Blogs</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
 
   <style>
+    /* --- Global Styles --- */
     body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #faf9f6; /* fallback color */
-    
-    /* Fullscreen fixed background */
-    background-image: url('blogwallpaper4.png');
-    background-repeat: no-repeat;       /* don't tile */
-    background-size: cover;             /* cover entire screen */
-    background-position: center center; /* center the image */
-    background-attachment: fixed;       /* stay fixed when scrolling */
-    
-    color: #333;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
-}
-
-    header {
-      text-align: center;
-      margin-bottom: 30px;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #faf9f6;
+        background-image: url('beigewall1.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        color: #333;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
     }
 
-    h1 {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 3em;
-      margin-bottom: 5px;
-    }
-
-    .date-line {
-      font-family: 'Segoe UI', sans-serif;
-      font-weight: 400;
-      font-size: 0.95em;
-      color: #666;
-      margin-bottom: 40px;
-    }
-
-    .black-text {
-      color: black;
-      font-weight: bold;
-    }
-
-    /* Layout */
+    /* --- Layout --- */
     .page-container {
-      display: flex;
-      gap: 40px;
-      max-width: 1000px;
-      margin: auto;
+        display: flex;
+        gap: 40px;
+        max-width: 1000px;
+        margin: auto;
     }
 
     .separator {
-      width: 2px;
-      background-color: #ccc;
-      height: auto;
+        width: 2px;
+        background-color: #ccc;
+        height: auto;
     }
 
     .content-area {
-      flex: 3;
-      font-size: 1.1em;
-      line-height: 1.6em;
-      margin-bottom: 60px;
+        flex: 3;
+        font-size: 1.1em;
+        line-height: 1.6em;
+        margin-bottom: 60px;
     }
 
-    /* Polaroid Wrapper */
-    .polaroid-wrapper {
-      position: relative;
-      display: inline-block;
-      margin: 10px;
+    /* --- BLOG CARD DESIGN (Matches your blogdesign.css) --- */
+    .photos-section {
+        display: flex;
+        gap: 50px; /* Space for the hover transform */
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 40px;
     }
 
-    /* Shadow box */
+    .blog-wrapper {
+        width: 100%;
+        max-width: 300px; /* Adjusted for your sidebar layout */
+        position: relative;
+        z-index: 5;
+    }
+
+    .blog-post {
+        position: relative;
+        width: 100%;
+        background: white;
+        border: 2px solid black;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        z-index: 2;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .post-image {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .post-content {
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        border: 1px solid black;
+        padding: 6px 14px;
+        text-align: center;
+        z-index: 10;
+        min-width: 80%;
+        max-width: 85%;
+        white-space: nowrap;
+        max-height: 35px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .post-title {
+        font-family: 'Shadows Into Light', cursive;
+        font-size: 1.1em;
+        text-transform: uppercase;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .post-date {
+        display: block;
+        opacity: 0;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 0.75rem;
+        margin-top: 8px;
+        color: #000;
+        transition: opacity 0.3s ease;
+    }
+
     .shadow-box {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      border: 3px solid black;
-      z-index: 1;
-      opacity: 0;
-      transform: translate(0, 0);
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    /* Polaroid */
-    .polaroid {
-      position: relative;
-      width: 260px;
-      background: white;
-      border: 3px solid black;
-      transform: rotate(var(--angle, 0deg));
-      text-decoration: none;
-      color: inherit;
-      display: inline-block;
-      z-index: 2;
-      overflow: visible;
-      transition: transform 0.3s ease;
-    }
-
-    .polaroid img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .polaroid-content {
-      padding: 12px;
-      text-align: center;
-      background: white;
-      transition: transform 0.3s ease, scale 0.3s ease, border 0.3s ease;
-    }
-
-    .polaroid-title {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.4em;
-      margin: 0 0 6px 0;
-      text-decoration: none;
-    }
-
-    .polaroid-meta {
-      font-size: 0.85em;
-      font-family: 'Segoe UI', sans-serif;
-      color: #555;
+        position: absolute;
+        inset: 0;
+        background-color: black;
+        z-index: 1;
     }
 
     /* Hover Effects */
-    .polaroid-wrapper:hover .polaroid {
-      transform: translate(-12px, -12px);
+    .blog-wrapper:hover { z-index: 100; }
+    
+    .blog-wrapper:hover .blog-post {
+        transform: translate(-12px, -8px); /* Slightly reduced for sidebar fit */
     }
 
-    .polaroid-wrapper:hover .shadow-box {
-      opacity: 1;
-      transform: translate(8px, 8px);
+    .blog-wrapper:hover .post-content {
+        max-height: 100px;
+        bottom: 15px;
+        padding-bottom: 12px;
+        white-space: normal; /* Allows date to wrap below title */
     }
 
-    .polaroid-wrapper:hover .polaroid-content {
-      transform: translate(-8px, -20px) scale(0.9);
-      border: 2px solid black;
-    }
+    .blog-wrapper:hover .post-date { opacity: 1; }
 
-    /* Photos section */
-    .photos-section {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 40px;
-    }
-
-    /* Suggested blogs sidebar */
-    .suggested {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 15px;
-      padding-left: 20px;
-    }
-
-    .suggested h3 {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.6em;
-      margin-bottom: 10px;
-      border-bottom: 2px solid black;
-      padding-bottom: 6px;
-    }
-
-    .suggested a {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.2em;
-      color: black;
-      text-decoration: none;
-    }
-
-    .suggested a:hover {
-      text-decoration: underline;
-    }
-
+    /* --- Sidebar & Others --- */
+    .suggested { flex: 1; padding-left: 20px; }
+    .suggested h3 { font-family: 'Shadows Into Light', cursive; border-bottom: 2px solid black; font-size: 1.6em; margin-bottom: 10px; }
+    .suggested a { font-family: 'Shadows Into Light', cursive; text-decoration: none; color: black; display: block; margin: 10px 0; font-size: 1.2em; }
+    .suggested a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
   <header>
-    <h1 class="blog-title">Lasts</h1>
+    <h1>Lasts</h1>
     <p class="date-line">
-      <span class="black-text">BLOGS</span> by 
-      <span class="black-text">ARCHITA JAISWAL</span> – 15 April 2025
+        <span class="black-text"><b>BLOGS</b></span> by 
+        <span class="black-text"><b>ARCHITA JAISWAL</b></span> – 15 April 2025
     </p>
   </header>
 
   <div class="page-container">
-
-    <!-- Main Blog Content -->
     <article class="content-area">
       <p>Goodbyes are bittersweet, and thinking of my final goodbye to my school was hard.<br>
       Here are some blogs and pictures about my "Lasts":</p>
 
-      <!-- Nested Polaroids with shadow -->
       <section class="photos-section">
-
-        <div class="polaroid-wrapper">
-          <a href="scribbles.html" class="polaroid" style="--angle: -4deg;">
-            <img src="scribbles1.jpg" alt="Scribbles Thumbnail" />
-            <div class="polaroid-content">
-              <h2 class="polaroid-title">scribbles and doodles</h2>
-              <p class="polaroid-meta">
-                <span class="black-text">BLOGS</span> by 
-                <span class="black-text">ARCHITA JAISWAL</span> – 15 April 2025
-              </p>
+        
+        <div class="blog-wrapper">
+          <a href="scribbles.html" class="blog-post">
+            <img src="scribbles1.jpg" class="post-image" alt="Scribbles" />
+            <div class="post-content">
+              <h2 class="post-title">scribbles and doodles</h2>
+              <span class="post-date"><b>BLOGS</b> by <b>ARCHITA JAISWAL</b></span>-15 April 2025
             </div>
           </a>
           <div class="shadow-box"></div>
         </div>
 
-        <div class="polaroid-wrapper">
-          <a href="farewell.html" class="polaroid" style="--angle: 3deg;">
-            <img src="farewell1.jpg" alt="Farewell Thumbnail" />
-            <div class="polaroid-content">
-              <h2 class="polaroid-title">Goodbye school !</h2>
-              <p class="polaroid-meta">
-                <span class="black-text">BLOGS</span> by 
-                <span class="black-text">ARCHITA JAISWAL</span> – 15 April 2025
-              </p>
+        <div class="blog-wrapper">
+          <a href="farewell.html" class="blog-post">
+            <img src="farewell1.jpg" class="post-image" alt="Farewell" />
+            <div class="post-content">
+              <h2 class="post-title">Goodbye school !</h2>
+              <span class="post-date"><b>BLOGS</b> by <b>ARCHITA JAISWAL</b></span>-15 April 2025
             </div>
           </a>
           <div class="shadow-box"></div>
@@ -244,10 +190,8 @@
       </section>
     </article>
 
-    <!-- Vertical Separator -->
     <div class="separator"></div>
 
-    <!-- Suggested Blogs Sidebar -->
     <aside class="suggested">
       <h3>Suggested Blogs</h3>
       <a href="fresh-start.html">Fresh Start</a>

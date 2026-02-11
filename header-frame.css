@@ -1,0 +1,42 @@
+/* Isolated Header Frame Style */
+header {
+    text-align: center;
+    margin: 20px auto 60px auto;
+    position: relative;
+    display: table;            /* Fits the frame to the text width */
+    padding: 40px 80px;        /* Spacing inside the box */
+    background-color: white;   /* Essential to hide the shadow behind text */
+    border: 1.5px solid black; /* The main sharp-edged box */
+    border-radius: 0 !important; /* Forces sharp corners */
+    /* The Solid Black Block Shadow (No blur) */
+    box-shadow: 14px 14px 0px 0px black; 
+}
+
+/* The Overlapping "Scribble" Box */
+header::before {
+    content: "";
+    position: absolute;
+    top: -10px;               /* Shifted up and left */
+    left: -10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1.5px solid black;
+    border-radius: 0 !important; /* Forces sharp corners */
+    pointer-events: none;      /* Click through to links if necessary */
+    z-index: -1;               /* Keeps it behind the main text box */
+}
+
+/* Text styles inside the frame */
+header h1 {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 3.5em;
+    margin: 0;
+    color: black;
+}
+
+header .date-line {
+    font-size: 0.95em;
+    color: #666;
+    margin-top: 15px;
+    margin-bottom: 0;
+}

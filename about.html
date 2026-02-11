@@ -1,73 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="header-frame.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Archita Jaiswal</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
 
-  
   <style>
+    /* --- Global Styles --- */
     body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #faf9f6; /* fallback color */
-    
-    /* Fullscreen fixed background */
-    background-image: url('blogwallpaper4.png');
-    background-repeat: no-repeat;       /* don't tile */
-    background-size: cover;             /* cover entire screen */
-    background-position: center center; /* center the image */
-    background-attachment: fixed;       /* stay fixed when scrolling */
-    
-    color: #333;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
-}
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #faf9f6;
+        background-image: url('beigewall1.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        color: #333;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
+    }
 
+    /* --- The Content Box --- */
+    .content {
+        max-width: 800px;
+        margin: 60px auto;
+        background: rgba(255, 255, 255, 0.9); /* Slightly more solid for readability */
+        padding: 40px;
+        border: 2px solid black; /* Matches the frame thickness */
+        box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        position: relative;
+        z-index: 1;
+    }
 
     h2 {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 2em;
-      margin-bottom: 20px;
+        font-family: 'Shadows Into Light', cursive;
+        font-size: 2.2em;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
     }
 
     p {
-      font-size: 1em;
-      line-height: 1.6;
+        font-size: 1.1em;
+        line-height: 1.8;
+        margin-bottom: 20px;
     }
 
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: black;
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.2em;
-      transition: color 0.3s ease;
+    /* --- Back Button --- */
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: black;
+        font-family: 'Shadows Into Light', cursive;
+        font-size: 1.4em;
+        font-weight: bold;
+        transition: transform 0.2s ease;
     }
 
-    a:hover {
-      color: gray;
+    .back-link:hover {
+        transform: translateX(-5px);
+        color: #555;
     }
 
-    .content {
-  max-width: 800px;
-  margin: 60px auto;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 30px;
-  border-radius: 12px;
-}
-
+    /* --- Date Line inside Frame --- */
+    .date-line {
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 0.9em;
+        letter-spacing: 2px;
+        color: #666;
+    }
   </style>
-  </head>
+</head>
 <body>
+
+  <header>
+    <h1>About Me</h1>
+    <p class="date-line">ARCHITA JAISWAL</p>
+  </header>
 
   <div class="content">
 
-    <h2>About Archita Jaiswal</h2>
+    <h2>The Girl Behind the Blogs</h2>
 
     <p>
       Archita Jaiswal was born in Jabalpur, Madhya Pradesh, but her story was never tied down to one place. Being an army kid meant growing up across different cities, carrying pieces of each along the way. With a father in the army, her household was built on strict rules, discipline, and sharp routines—life inside those walls was anything but easy.
@@ -85,11 +103,10 @@
       This blog is her canvas—a place where she shares everything about her small messy world. Welcome to her world. Welcome to her blogs!
     </p>
 
-    <a href="index.html">← Back to Home</a>
+    <a href="index.html" class="back-link">← Back to Home</a>
 
   </div>
 
 </body>
-
 </html>
 
