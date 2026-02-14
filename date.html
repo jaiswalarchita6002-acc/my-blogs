@@ -335,7 +335,7 @@ const BLOG_ID = "date";
 
       <article class="article-text">
 
-        rifted so far from the actual meaning that we’re just pretending we know what we’re doing. Real love used to feel simple — not easy, but simple. It meant showing up, talking things out, staying even when it was inconvenient. It meant effort, not excuses. But somewhere between “seen” and “typing…”, we lost that softness. Now love feels like a glitchy update that everyone got but no one knows how to use properly.</p>
+        <p> We are drifted so far from the actual meaning that we’re just pretending we know what we’re doing. Real love used to feel simple — not easy, but simple. It meant showing up, talking things out, staying even when it was inconvenient. It meant effort, not excuses. But somewhere between “seen” and “typing…”, we lost that softness. Now love feels like a glitchy update that everyone got but no one knows how to use properly.</p>
 
       <p>We keep saying we want something real, something genuine, something peaceful — yet we’re the same people running away the second things start feeling too real. It’s like we want depth but only in shallow doses. We want attachment, but only if the other person catches feelings first. We crave love but we’re so terrified of heartbreak that we’d rather stay in a grey zone than actually commit. And that’s where today’s dating culture gets messy — because instead of clarity, we’ve built an entire relationship structure out of confusion.</p>
 
@@ -411,22 +411,34 @@ const BLOG_ID = "date";
 
         <div class="sidebar-widget">
 
-          <div class="widget-inner" style="background:black;color:white;">
+  <div class="widget-inner" style="background:black;color:white;">
 
-            <h3 class="widget-title" style="color:white;border-color:#333;">Subscribe VIA EMAIL</h3>
+    <h3 class="widget-title" style="color:white;border-color:#333;">
+      Subscribe VIA EMAIL
+    </h3>
 
-            <p style="font-size:0.5rem;color:#bbb;">Get Notifications directly to your Inbox!</p>
+    <p style="font-size:0.5rem;color:#bbb;">
+      Get Notifications directly to your Inbox!
+    </p>
 
-            <input type="email" placeholder="Enter email..."
-              style="width:100%;border:1px solid #333;background:#222;color:white;padding:8px;font-size:0.6rem;margin-bottom:10px;">
+    <input
+      type="email"
+      id="subEmail"
+      placeholder="Enter email..."
+      style="width:100%;border:1px solid #333;background:#222;color:white;padding:8px;font-size:0.6rem;margin-bottom:10px;"
+    >
 
-            <button style="width:100%;background:white;color:black;border:none;padding:8px;font-weight:800;font-size:0.5rem;cursor:pointer;">
-              JOIN THE CLUB
-            </button>
+    <button
+      onclick="subscribeEmail()"
+      style="width:100%;background:white;color:black;border:none;padding:8px;font-weight:800;font-size:0.5rem;cursor:pointer;"
+    >
+      JOIN THE CLUB
+    </button>
 
-          </div>
+  </div>
 
-        </div>
+</div>
+
 
       </aside>
 
