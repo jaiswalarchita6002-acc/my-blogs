@@ -1,363 +1,697 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  <link rel="stylesheet" href="header-frame.css">
-  <link rel="stylesheet" href="custom-responsive.css" />
 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My 17th birthday - Archita Jaiswal Blogs</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>My 17th Birthday - Archita Jaiswal Blogs</title>
 
   
+
+  <link rel="stylesheet" href="style1.css">
+
+  <link rel="stylesheet" href="search-style.css">
+
+  <script src="script1.js" defer></script>
+
   
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+
+
 
   <style>
+
+    @font-face { 
+      font-family: "Valentina"; 
+      src: url("Hello Valentina.ttf"); 
+    }
+
+
+
     body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #faf9f6; /* fallback color */
-    
-    /* Fullscreen fixed background */
-    background-image: url('beigewall1.jpeg');
-    background-repeat: no-repeat;       /* don't tile */
-    background-size: cover;             /* cover entire screen */
-    background-position: center center; /* center the image */
-    background-attachment: fixed;       /* stay fixed when scrolling */
-    
-    color: #333;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
-}
 
-    header {
-      text-align: center;
-      margin-bottom: 30px;
+      margin: 0;
+
+      background-color: #ffffff;
+
+      font-family: 'Montserrat', sans-serif;
+
+      color: #000;
+
+      overflow-x: hidden;
+
     }
 
-    h1 {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 3em;
-      margin-bottom: 5px;
-    }
 
-    .date-line {
-      font-family: 'Segoe UI', sans-serif;
-      font-weight: 400;
-      font-size: 0.95em;
-      color: #666;
-      margin-bottom: 40px;
-    }
 
-    .black-text {
-      color: black;
-      font-weight: bold;
-    }
+    /* --- NAVIGATION --- */
 
-    .page-container {
+    .site-nav {
+
+      width: 100%;
+
+      background: white;
+
       display: flex;
-      gap: 40px;
-      max-width: 1000px;
-      margin: auto;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      padding: 20px 60px;
+
+      box-sizing: border-box;
+
+      border-bottom: 1px solid #f0f0f0;
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
+
     }
 
-    .separator {
-      width: 2px;
-      background-color: #ccc;
+
+
+    .site-logo { 
+      font-family: "Valentina", cursive; 
+      font-size: 1.8rem; 
+      text-decoration: none; 
+      color: #000; 
+      display: flex; 
+      align-items: center; 
     }
 
-    .content-area {
-      flex: 3;
-      font-size: 1.1em;
-      line-height: 1.6em;
-      margin-bottom: 60px;
+    .site-logo span { 
+      background: black; 
+      color: white; 
+      padding: 2px 8px; 
+      font-family: 'Montserrat', sans-serif; 
+      font-weight: 800; 
+      font-size: 0.8rem; 
+      margin-left: 8px; 
+      letter-spacing: 1px; 
     }
+
+    .nav-links { 
+      display: flex; 
+      gap: 30px; 
+    }
+
+    .nav-links a { 
+      text-decoration: none; 
+      color: #000; 
+      font-size: 0.75rem; 
+      font-weight: 700; 
+      letter-spacing: 1.5px; 
+      text-transform: uppercase; 
+    }
+
+
+
+    /* --- LAYOUT --- */
+
+    .main-wrapper { 
+      max-width: 1200px; 
+      margin: 40px auto; 
+      padding: 0 40px; 
+    }
+
+
+
+    /* --- HERO --- */
+
+    .hero-container { 
+      position: relative; 
+      width: 100%; 
+      margin-bottom: 120px; 
+    }
+
+    .hero-image { 
+      width: 100%; 
+      height: 500px; 
+      object-fit: cover; 
+      display: block; 
+      border: 1px solid #eee; 
+      background: #f9f9f9; 
+    }
+
+    .title-card { 
+      position: absolute; 
+      bottom: -45px; 
+      left: 50px; 
+      background: white; 
+      border: 1px solid #000; 
+      padding: 8px; 
+      z-index: 10; 
+      box-shadow: 10px 10px 0px rgba(0,0,0,0.05); 
+    }
+
+    .title-card-inner { 
+      border: 1px solid #000; 
+      padding: 35px 50px; 
+      background: white; 
+      text-align: center; 
+    }
+
+    .title-card h1 { 
+      font-weight: 800; 
+      font-size: 2.4rem; 
+      margin: 0 0 12px 0; 
+      text-transform: uppercase; 
+      letter-spacing: -1px; 
+      line-height: 1; 
+    }
+
+    .title-meta { 
+      font-size: 0.65rem; 
+      color: #181818; 
+      text-transform: uppercase; 
+      letter-spacing: 1.5px; 
+    }
+
+
+
+    /* --- CONTENT GRID --- */
+
+    .content-container { 
+      display: grid; 
+      grid-template-columns: 1.8fr 1.2fr; 
+      gap: 50px; 
+      align-items: start; 
+    }
+
+    .article-text { 
+      font-size: 1rem; 
+      line-height: 1.9; 
+      color: #333; 
+    }
+
+
+
+    /* --- POLAROID --- */
 
     .photos-section {
       display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
       justify-content: center;
-      margin-top: 40px;
+      margin: 40px 0;
     }
 
     .polaroid {
-      width: 260px;
       background: white;
-      border: 2px solid black;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-      transform: rotate(var(--angle, 0deg));
-      transition: transform 0.3s ease;
-    }
-
-    .polaroid:hover {
-      transform: translate(-10px, -10px);
-      box-shadow: 20px 20px 40px rgba(0,0,0,0.3);
+      padding: 12px 12px 35px 12px;
+      border: 1px solid #ddd;
+      box-shadow: 8px 8px 20px rgba(0,0,0,0.1);
+      transform: rotate(-2deg);
+      max-width: 320px;
+      width: 100%;
     }
 
     .polaroid img {
       width: 100%;
-      height: 180px; 
-      object-fit: cover;
-      object-position: top center;  
       display: block;
+      border: 1px solid #eee;
     }
 
-    .polaroid-date {
-      font-size: 0.85em;
-      padding: 10px 10px 5px;
+    .polaroid-caption {
+      font-family: 'Shadows Into Light', cursive;
       text-align: center;
-      font-family: 'Segoe UI', sans-serif;
-      color: #555;
+      margin-top: 15px;
+      font-size: 1.3rem;
+      color: #222;
     }
 
-    .suggested {
-      flex: 1;
-      padding-left: 20px;
+
+
+    /* --- SIDEBAR --- */
+
+    .sidebar-right { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 25px; 
     }
 
-    .suggested h3 {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.8em;
-      border-bottom: 2px solid black;
-      padding-bottom: 6px;
-      margin-bottom: 15px;
+    .sidebar-widget { 
+      border: 1px solid #000; 
+      padding: 5px; 
+      background: black; 
+      width: 100%; 
     }
 
-    .suggested-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .widget-inner { 
+      background: white; 
+      border: 1px solid #000; 
+      padding: 20px; 
+      position: relative; 
+      top: -5px; 
+      left: -5px; 
     }
 
-    .suggested-list li {
-      margin: 12px 0;
+    .widget-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
     }
 
-    .suggested-list a {
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 1.3em;
-      text-decoration: none;
-      color: #333;
+
+
+    /* --- COMMENTS --- */
+
+    .comment-section { 
+      grid-column: 1 / -1; 
+      margin-top: 80px; 
+      padding-top: 50px; 
+      border-top: 1px solid #eee; 
     }
 
-    .suggested-list a:hover {
-      text-decoration: underline;
+    #commentBox { 
+      width: 100%; 
+      height: 120px; 
+      border: 1px solid #000; 
+      padding: 15px; 
+      font-family: inherit; 
+      box-sizing: border-box; 
+      margin-top: 20px; 
     }
 
-    /* COMMENT SECTION STYLING */
-    #commentBox {
-      width: 100%;
-      height: 100px;
-      padding: 10px;
-      font-family: 'Shadows Into Light', cursive;
-      font-size: 16px;
-      margin-top: 40px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      resize: vertical;
+    #submitBtn { 
+      background: black; 
+      color: white; 
+      border: none; 
+      padding: 12px 40px; 
+      text-transform: uppercase; 
+      font-size: 0.75rem; 
+      font-weight: 800; 
+      margin-top: 15px; 
+      cursor: pointer; 
     }
 
-    #submitBtn {
-      margin-top: 10px;
-      padding: 8px 15px;
-      font-size: 16px;
-      font-family: 'Shadows Into Light', cursive;
-      cursor: pointer;
-      border-radius: 6px;
-      border: none;
-      background-color: #333;
-      color: #fff;
-      transition: background 0.2s ease;
+    .comment-item { 
+      background: #f9f9f9; 
+      padding: 20px; 
+      margin-top: 20px; 
+      border-left: 3px solid #000; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
     }
 
-    #submitBtn:hover {
-      background-color: #555;
+    .initial-circle { 
+      width: 35px; 
+      height: 35px; 
+      border-radius: 50%; 
+      background: #000; 
+      color: #fff; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-weight: bold; 
+      margin-right: 15px; 
+      font-size: 0.8rem; 
+      flex-shrink: 0; 
     }
 
-    .comment {
-      background: #f4f4f4;
-      font-family: 'Shadows Into Light', cursive;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+
+
+    /* --- RESPONSIVE --- */
+
+    @media (max-width: 600px) {
+
+      .content-container { 
+        grid-template-columns: 1.6fr 1.4fr; 
+        gap: 15px; 
+      }
+
+      .hero-image { height: 250px; }
+
+      .title-card { 
+        left: 10px; 
+        right: 10px; 
+        bottom: -30px; 
+      }
+
+      .title-card-inner { padding: 15px; }
+
+      .title-card h1 { font-size: 1rem; }
+
+      .widget-title { font-size: 0.55rem; }
+
+      .nav-links { gap: 10px; }
+
+      .nav-links a { font-size: 0.6rem; }
+
     }
 
-    .initial-circle {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: #333;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .delete-btn {
-      margin-left: auto;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-size: 18px;
-    }
   </style>
-</head>
-<body>
-  <header>
-    <h1>MY 17th Birthday</h1>
-    <p class="date-line">
-        <span class="black-text">BLOGS</span> by 
-        <span class="black-text">ARCHITA JAISWAL</span> – 19 October 2023
-    </p>
-</header>
 
-  <div class="page-container">
-    <article class="content-area">
-      <p>SEVENTEEN! , i know right , i was equally excited as any one would be on their seventeenth . I didn't slept the night before my birthday , thinking about all of it , thinking of the dress i bought , a bodycon dress , as i always dreamt of , me and my frnds in a aesthetic cafe . FIRST TIME EVER IN LIFE cuz before this time i always use to keep it small , just with my family members . i ordered my favourite --chocolate cake ! , YUMMM!</p>
+</head>
+
+
+
+<body>
+
+
+
+  <nav class="site-nav">
+
+    <a href="index.html" class="site-logo">Archita <span>BLOGS</span></a>
+
+    <div class="nav-links">
+
+      <a href="index.html">HOME</a>
+
+      <a href="about.html">ABOUT</a>
+
+    </div>
+
+  </nav>
+
+
+
+  <div class="main-wrapper">
+
+    <header class="hero-container">
+
+      <img src="17birthday.jpg" class="hero-image" alt="My 17th Birthday" />
+
+      <div class="title-card">
+
+        <div class="title-card-inner">
+
+          <h1>My 17th Birthday</h1>
+
+          <div class="title-meta">
+            <b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong> — OCT 19, 2023
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+
+    <div class="content-container">
+
+      <article class="article-text">
+
+        <p>SEVENTEEN! , i know right , i was equally excited as any one would be on their seventeenth . I didn't slept the night before my birthday , thinking about all of it , thinking of the dress i bought , a bodycon dress , as i always dreamt of , me and my frnds in a aesthetic cafe . FIRST TIME EVER IN LIFE cuz before this time i always use to keep it small , just with my family members . i ordered my favourite --chocolate cake ! , YUMMM!</p>
 
 <p>we ate red sauce pastas , we gossiped and we laughed all together . Also i didn't told u about the best part -- PRESENTS! So, i got a very cute sipper as a gift and an aesthetic mug . We ended our celebration with mug of cold coffee and laughters .I had too much fun with my girlies. The birthday was worthy remembering!</p>
 
-      <section class="photos-section">
-        <div class="polaroid" style="--angle: -2deg;">
-          <img src="birthday 17.jpg" alt="Birthday celebration" />
-          <div class="polaroid-date">18.10.2023</div>
+        <section class="photos-section">
+
+          <div class="polaroid">
+
+            <img src="birthday 17.jpg" alt="17th Birthday Celebration" />
+
+            <div class="polaroid-caption">18.10.2023</div>
+
+          </div>
+
+        </section>
+
+
+
+        <p>We ate red sauce pasta, we gossiped...</p>
+
+      </article>
+
+
+
+      <aside class="sidebar-right">
+
+        
+
+        <!-- SEARCH -->
+
+        <div class="sidebar-widget">
+
+          <div class="widget-inner">
+
+            <h3 class="widget-title">SEARCH BLOGS</h3>
+
+            <input type="text" id="blogSearch" placeholder="Type to search..." list="blogSuggestions">
+
+            <datalist id="blogSuggestions"></datalist>
+
+            <button class="sidebar-btn" onclick="handleSearch()">GO</button>
+
+          </div>
+
         </div>
+
+
+
+        <!-- RECENT -->
+
+        <div class="sidebar-widget">
+
+          <div class="widget-inner">
+
+            <h3 class="widget-title">RECENT BLOGS</h3>
+
+            <ul style="list-style:none;padding:0;margin:0;font-size:0.6rem;font-weight:700;line-height:2;">
+
+              <li><a href="farewell.html" style="text-decoration:none; color:black;">GOODBYE SCHOOL !</a></li>
+<li><a href="fresh-start.html" style="text-decoration:none; color:black;">FRESH START</a></li>
+<li><a href="life-as-army-kid.html" style="text-decoration:none; color:black;">LIFE AS AN ARMY KID</a></li>
+<li><a href="new.html" style="text-decoration:none; color:black;">THE SHIFT</a></li>
+
+
+            </ul>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- SUBSCRIBE -->
+
+        <div class="sidebar-widget">
+
+          <div class="widget-inner" style="background:black;color:white;">
+
+            <h3 class="widget-title" style="color:white;">Subscribe VIA EMAIL</h3>
+
+            <p style="font-size:0.5rem;color:#bbb;margin-bottom:12px;">
+              Get Notifications directly to your Inbox!
+            </p>
+
+            <input type="email" id="subEmail" placeholder="Enter email..."
+              style="width:100%;border:1px solid #333;background:#222;color:white;padding:8px;font-size:0.6rem;margin-bottom:10px;">
+
+            <button onclick="subscribeEmail()"
+              style="width:100%;background:white;color:black;border:none;padding:8px;font-weight:800;font-size:0.5rem;cursor:pointer;">
+              JOIN THE CLUB
+            </button>
+
+          </div>
+
+        </div>
+
+      </aside>
+
+
+
+      <!-- COMMENTS -->
+
+      <section class="comment-section">
+
+        <h3 class="widget-title" style="font-size:1.2rem;border:none;">PEOPLE S' VIEWS</h3>
+
+        <textarea id="commentBox" placeholder="Wish me a happy birthday!"></textarea>
+
+        <button id="submitBtn" onclick="postComment()">Submit</button>
+
+        <div id="commentsList"></div>
+
       </section>
 
-       <!-- COMMENT SECTION -->
-      <textarea id="commentBox" placeholder="Write your comment..."></textarea>
-      <button id="submitBtn" onclick="postComment()">Submit</button>
-      <div id="commentsList"></div>
-    </article>
+    </div>
 
-    <div class="separator"></div>
-
-    <aside class="suggested">
-      <h3>Suggested Blogs</h3>
-      <ul class="suggested-list">
-        <li><a href="scribbles.html">Scribbles and Doodles</a></li>
-        <li><a href="date.html">LOVE NOWADAYS</a></li>
-        <li><a href="life-as-army-kid.html">Life as an Army Kid</a></li>
-        <li><a href="last.html">Lasts</a></li>
-        <li><a href="index.html">Home</a></li>
-      </ul>
-    </aside>
   </div>
 
-  <!-- FIREBASE SDKS -->
+
+
+  <!-- FIREBASE -->
+
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 
+
+
   <script>
-    const BLOG_ID = "birthday";
+
+    const BLOG_ID = "my-17th-birthday";
 
     const firebaseConfig = {
+
       apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
+
       authDomain: "comment-123.firebaseapp.com",
+
       projectId: "comment-123",
+
       storageBucket: "comment-123.firebasestorage.app",
+
       messagingSenderId: "1094221233460",
-      appId: "1:1094221233460:web:a149795852cdfe0908f961",
-      measurementId: "G-N88Z8M65Q1"
+
+      appId: "1:1094221233460:web:a149795852cdfe0908f961"
+
     };
 
+
+
     firebase.initializeApp(firebaseConfig);
+
     const db = firebase.firestore();
+
     const auth = firebase.auth();
+
     let currentUser = null;
 
-    auth.onAuthStateChanged(user => {
-      if(user){
-        currentUser = user;
-        renderComments();
-      } else {
-        currentUser = null;
-      }
+
+
+    auth.onAuthStateChanged(user => { 
+      currentUser = user; 
+      renderComments(); 
     });
 
-    function signIn() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider).catch(err => alert(err.message));
-    }
+
 
     function postComment() {
-  const commentText = document.getElementById("commentBox").value;
 
-  if (!currentUser) {
-    alert("Please sign in first!");
-    signIn();
-    return;
-  }
+      const text = document.getElementById("commentBox").value;
 
-  if (commentText.trim() === "") {
-    alert("Please write something!");
-    return;
-  }
+      if (!currentUser) { 
+        auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); 
+        return; 
+      }
 
-  db.collection("blogs")
-    .doc(BLOG_ID)
-    .collection("comments")
-    .add({
-      text: commentText,
-      time: Date.now(),
-      userId: currentUser.uid,
-      displayName: currentUser.displayName,
-      userEmail: currentUser.email   // ⭐ IMPORTANT FIX
-    });
+      if (text.trim() === "") return;
 
-  document.getElementById("commentBox").value = "";
-}
 
-    function renderComments(){
-  db.collection("blogs")
-    .doc(BLOG_ID)
-    .collection("comments")
-    .orderBy("time", "desc")
-    .onSnapshot(snapshot => {
-      let html = "";
-      snapshot.forEach(doc => {
-        const data = doc.data();
 
-        const email = data.userEmail ? data.userEmail : "No email";
-        const initials = email.charAt(0).toUpperCase();
+      db.collection("blogs").doc(BLOG_ID).collection("comments").add({
 
-        const canDelete = currentUser && currentUser.uid === data.userId;
+        text,
+        time: Date.now(),
+        userId: currentUser.uid,
+        displayName: currentUser.displayName,
+        userEmail: currentUser.email
 
-        html += `
-          <div class="comment">
-            <div class="initial-circle" title="${email}">
-              ${initials}
-            </div>
-            <span>${data.text}</span>
-            ${canDelete ? `<button class="delete-btn" onclick="deleteComment('${doc.id}')">🗑️</button>` : ""}
-          </div>
-        `;
       });
 
-      document.getElementById("commentsList").innerHTML = html;
-    });
-}
-    function deleteComment(commentId){
-      if(confirm("Are you sure you want to delete this comment?")){
-        db.collection("blogs")
-          .doc(BLOG_ID)
-          .collection("comments")
-          .doc(commentId)
-          .delete();
-      }
-    }
-  </script>
-</body>
-</html>
 
+
+      document.getElementById("commentBox").value = "";
+
+    }
+
+
+
+    function renderComments() {
+
+      db.collection("blogs").doc(BLOG_ID).collection("comments")
+      .orderBy("time", "desc")
+      .onSnapshot(snap => {
+
+        let html = "";
+
+        snap.forEach(doc => {
+
+          const d = doc.data();
+
+          const initials = (d.displayName || d.userEmail || "A")
+            .charAt(0).toUpperCase();
+
+          const isOwner = currentUser && currentUser.uid === d.userId;
+
+
+
+          html += `<div class="comment-item">
+
+            <div style="display:flex;align-items:center;">
+
+              <div class="initial-circle">${initials}</div>
+
+              <div>
+                <strong>${d.displayName || 'Anon'}</strong>
+                <p style="margin:5px 0;">${d.text}</p>
+              </div>
+
+            </div>
+
+            ${isOwner ? `<button onclick="deleteComm('${doc.id}')" style="background:none;border:none;cursor:pointer;">🗑️</button>` : ""}
+
+          </div>`;
+
+        });
+
+
+
+        document.getElementById("commentsList").innerHTML = html;
+
+      });
+
+    }
+
+
+
+    function deleteComm(id) {
+
+      if(confirm("Delete?")) {
+
+        db.collection("blogs").doc(BLOG_ID)
+        .collection("comments").doc(id).delete();
+
+      }
+
+    }
+
+
+
+    function subscribeEmail() {
+
+      const email = document.getElementById("subEmail").value.trim();
+
+      if (!email.includes("@")) { 
+        alert("Enter a valid email!"); 
+        return; 
+      }
+
+
+
+      db.collection("subscribers").add({ 
+        email, 
+        time: Date.now() 
+      }).then(() => {
+
+        alert("Subscribed!");
+        document.getElementById("subEmail").value = "";
+
+      });
+
+    }
+
+  </script>
+
+</body>
+
+</html>
 
 
 

@@ -1,226 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="header-frame.css">
-  <link rel="stylesheet" href="custom-responsive.css" />
-
+  
+  
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LAST - Archita Jaiswal Blogs</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lasts - Archita Jaiswal Blogs</title>
+<link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="search-style.css">
+     <script src="script1.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
 
   <style>
-    /* --- Global Styles --- */
+    /* --- CUSTOM FONTS --- */
+    @font-face { font-family: "Valentina"; src: url("Hello Valentina.ttf"); }
+
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #faf9f6;
-        background-image: url('beigewall1.jpeg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-        background-attachment: fixed;
-        color: #333;
-        padding: 20px;
-        position: relative;
-        overflow-x: hidden;
+      margin: 0;
+      background-color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      color: #000;
+      padding: 0;
+      overflow-x: hidden;
     }
 
-    /* --- Layout --- */
-    .page-container {
-        display: flex;
-        gap: 40px;
-        max-width: 1000px;
-        margin: auto;
+    /* --- NAVIGATION --- */
+    .site-nav {
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #f0f0f0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .separator {
-        width: 2px;
-        background-color: #ccc;
-        height: auto;
+    .site-logo { 
+      font-family: "Valentina", cursive; 
+      font-size: 1.8rem; 
+      text-decoration: none; 
+      color: #000; 
+      display: flex;
+      align-items: center;
     }
-
-    .content-area {
-        flex: 3;
-        font-size: 1.1em;
-        line-height: 1.6em;
-        margin-bottom: 60px;
+    .site-logo span { 
+      background: black; color: white; padding: 2px 8px; 
+      font-family: 'Montserrat', sans-serif; font-weight: 800; 
+      font-size: 0.8rem; margin-left: 8px; letter-spacing: 1px;
     }
-
-    /* --- BLOG CARD DESIGN (Matches your blogdesign.css) --- */
-    .photos-section {
-        display: flex;
-        gap: 50px; /* Space for the hover transform */
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 40px;
-    }
-
-    .blog-wrapper {
-        width: 100%;
-        max-width: 300px; /* Adjusted for your sidebar layout */
-        position: relative;
-        z-index: 5;
-    }
-
-    .blog-post {
-        position: relative;
-        width: 100%;
-        background: white;
-        border: 2px solid black;
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        z-index: 2;
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .post-image {
-        width: 100%;
-        height: 280px;
-        object-fit: cover;
-        display: block;
-    }
-
-    .post-content {
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: white;
-        border: 1px solid black;
-        padding: 6px 14px;
-        text-align: center;
-        z-index: 10;
-        min-width: 80%;
-        max-width: 85%;
-        white-space: nowrap;
-        max-height: 35px;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .post-title {
-        font-family: 'Shadows Into Light', cursive;
-        font-size: 1.1em;
-        text-transform: uppercase;
-        margin: 0;
-        font-weight: bold;
-    }
-
-    .post-date {
-        display: block;
-        opacity: 0;
-        font-family: 'Segoe UI', sans-serif;
-        font-size: 0.75rem;
-        margin-top: 8px;
-        color: #000;
-        transition: opacity 0.3s ease;
-    }
-
-    .shadow-box {
-        position: absolute;
-        inset: 0;
-        background-color: black;
-        z-index: 1;
-    }
-
-    /* Hover Effects */
-    .blog-wrapper:hover { z-index: 100; }
     
-    .blog-wrapper:hover .blog-post {
-        transform: translate(-12px, -8px); /* Slightly reduced for sidebar fit */
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a {
+      text-decoration: none; color: #000; font-size: 0.75rem;
+      font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
     }
 
-    .blog-wrapper:hover .post-content {
-        max-height: 100px;
-        bottom: 15px;
-        padding-bottom: 12px;
-        white-space: normal; /* Allows date to wrap below title */
+    /* --- MAIN LAYOUT --- */
+    .main-wrapper {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 40px;
     }
 
-    .blog-wrapper:hover .post-date { opacity: 1; }
+    /* --- HERO --- */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      margin-bottom: 120px;
+    }
+    .hero-image {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(20%);
+    }
 
-    /* --- Sidebar & Others --- */
-    .suggested { flex: 1; padding-left: 20px; }
-    .suggested h3 { font-family: 'Shadows Into Light', cursive; border-bottom: 2px solid black; font-size: 1.6em; margin-bottom: 10px; }
-    .suggested a { font-family: 'Shadows Into Light', cursive; text-decoration: none; color: black; display: block; margin: 10px 0; font-size: 1.2em; }
-    .suggested a:hover { text-decoration: underline; }
+    .title-card {
+      position: absolute;
+      bottom: -45px;
+      left: 50px;
+      background: white;
+      border: 1px solid #000;
+      padding: 8px;
+      z-index: 10;
+      box-shadow: 10px 10px 0px rgba(0,0,0,0.05);
+    }
+    .title-card-inner {
+      border: 1px solid #000;
+      padding: 35px 50px;
+      background: white;
+      text-align: center;
+    }
+    .title-card h1 {
+      font-weight: 800;
+      font-size: 2.8rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    /* --- THE GRID: FORCED 2 COLUMNS ALWAYS --- */
+    .content-container {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr; 
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* --- PHOTO CARDS --- */
+    .photos-section {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .blog-wrapper {
+      width: 100%;
+      max-width: 280px;
+      position: relative;
+    }
+    .blog-post {
+      position: relative;
+      width: 100%;
+      background: white;
+      border: 1px solid black;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      z-index: 2;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .post-image { width: 100%; height: 320px; object-fit: cover; display: block; }
+    
+    .post-content {
+      font-family:'Montserrat';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border: 1px solid black;
+      padding: 10px;
+      text-align: center;
+      z-index: 10;
+      width: 80%;
+      transition: all 0.4s ease;
+    }
+    .post-title { font-family: 'Montserrat'; font-size: 1.1rem; margin: 0; text-transform: uppercase; }
+    .post-date { display: none; font-size: 0.6rem; margin-top: 5px; font-weight: 700; }
+    
+    .shadow-box { position: absolute; inset: 0; background: black; z-index: 1; }
+
+    .blog-wrapper:hover .blog-post { transform: translate(-8px, -8px); }
+    .blog-wrapper:hover .post-date { display: block; }
+    .blog-wrapper:hover .post-content { bottom: 10px; }
+
+    /* --- SIDEBAR --- */
+    .sidebar-right { display: flex; flex-direction: column; gap: 30px; }
+    .sidebar-widget { border: 1px solid #000; padding: 5px; background: black; }
+    .widget-inner { background: white; border: 1px solid #000; padding: 25px; position: relative; top: -6px; left: -6px; }
+    .widget-title { font-weight: 800; font-size: 0.8rem; text-transform: uppercase; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 15px; }
+
+    /* --- COMMENT SECTION --- */
+    .comment-section { 
+      grid-column: 1 / -1; 
+      margin-top: 80px; 
+      padding-top: 50px; 
+      border-top: 1px solid #eee; 
+    }
+    #commentBox { width: 100%; height: 120px; border: 1px solid #000; padding: 15px; font-family: inherit; box-sizing: border-box; margin-top: 20px; }
+    #submitBtn { background: black; color: white; border: none; padding: 12px 40px; text-transform: uppercase; font-size: 0.75rem; font-weight: 800; margin-top: 15px; cursor: pointer; }
+
+    .comment-item { background: #f9f9f9; padding: 20px; margin-top: 20px; border-left: 3px solid #000; display: flex; align-items: center; gap: 15px; }
+    .initial-circle { width: 40px; height: 40px; border-radius: 50%; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
+
+    /* --- RESPONSIVENESS --- */
+
+    @media (max-width: 600px) {
+  /* Keeps sidebar on the right (60/40 split) */
+  .content-container { 
+    grid-template-columns: 1.6fr 1.4fr; 
+    gap: 15px; 
+  }
+
+  .hero-image { height: 250px; }
+  .title-card { left: 10px; right: 10px; bottom: -30px; }
+  .title-card-inner { padding: 15px; }
+  .title-card h1 { font-size: 1rem; }
+  
+  /* Shrink sidebar fonts so they don't overlap */
+  .widget-title { font-size: 0.55rem; }
+  .nav-links { gap: 10px; }
+  .nav-links a { font-size: 0.6rem; }
+}
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Lasts</h1>
-    <p class="date-line">
-        <span class="black-text"><b>BLOGS</b></span> by 
-        <span class="black-text"><b>ARCHITA JAISWAL</b></span> – 15 April 2025
-    </p>
-  </header>
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo">Archita <span>BLOGS</span></a>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+  </nav>
 
-  <div class="page-container">
-    <article class="content-area">
-      <p>Goodbyes are bittersweet, and thinking of my final goodbye to my school was hard.<br>
-      Here are some blogs and pictures about my "Lasts":</p>
+  <div class="main-wrapper">
+    
+    <header class="hero-container">
+      <img src="scribbles2.jpg" class="hero-image" alt="Last days of school" />
+      <div class="title-card">
+        <div class="title-card-inner">
+          <h1>Lasts</h1>
+          <div style="font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase;">
+            <b>BLOGS</b> by <b>ARCHITA JAISWAL</b> — APRIL 15, 2025
+          </div>
+        </div>
+      </div>
+    </header>
 
-      <section class="photos-section">
+    <div class="content-container">
+      
+      <article>
+        <p style="font-size: 1rem; line-height: 1.8; color: #333; margin-bottom: 40px;">
+          Goodbyes are bittersweet, and thinking of my final goodbye to my school was hard. 
+          Below are the fragments of those final moments.
+        </p>
+
+        <section class="photos-section">
+          <div class="blog-wrapper">
+            <a href="scribbles.html" class="blog-post">
+              <img src="scribbles1.jpg" class="post-image" alt="Scribbles" />
+              <div class="post-content">
+                <h2 class="post-title">Scribbles and Doodles</h2>
+                <span class="post-date"><b>BLOGS</B> By <b>ARCHIA JAISWAL</B> -15 APRIL 2025</span>
+              </div>
+            </a>
+            <div class="shadow-box"></div>
+          </div>
+
+          <div class="blog-wrapper">
+            <a href="farewell.html" class="blog-post">
+              <img src="farewell1.jpg" class="post-image" alt="Farewell" />
+              <div class="post-content">
+                <h2 class="post-title">Goodbye School!</h2>
+                <span class="post-date"><b>BLOGS</B> By <b>ARCHIA JAISWAL</B> -15 APRIL 2025</span>
+
+              </div>
+            </a>
+            <div class="shadow-box"></div>
+          </div>
+        </section>
+      </article>
+
+      <aside class="sidebar-right">
+
         
-        <div class="blog-wrapper">
-          <a href="scribbles.html" class="blog-post">
-            <img src="scribbles1.jpg" class="post-image" alt="Scribbles" />
-            <div class="post-content">
-              <h2 class="post-title">scribbles and doodles</h2>
-              <span class="post-date"><b>BLOGS</b> by <b>ARCHITA JAISWAL</b></span>-15 April 2025
-            </div>
-          </a>
-          <div class="shadow-box"></div>
-        </div>
 
-        <div class="blog-wrapper">
-          <a href="farewell.html" class="blog-post">
-            <img src="farewell1.jpg" class="post-image" alt="Farewell" />
-            <div class="post-content">
-              <h2 class="post-title">Goodbye school !</h2>
-              <span class="post-date"><b>BLOGS</b> by <b>ARCHITA JAISWAL</b></span>-15 April 2025
-            </div>
-          </a>
-          <div class="shadow-box"></div>
-        </div>
+        <!-- SEARCH WIDGET -->
 
-      </section>
-    </article>
+<div class="sidebar-widget">
 
-    <div class="separator"></div>
+  <div class="widget-inner">
 
-    <aside class="suggested">
-      <h3>Suggested Blogs</h3>
-      <a href="fresh-start.html">Fresh Start</a>
-      <a href="life-as-army-kid.html">Life as an Army Kid</a>
-      <a href="birthday.html">My 17th birthday</a>
-      <a href="index.html">Home</a>
-    </aside>
+    <h3 class="widget-title">SEARCH BLOGS</h3>
+
+    <div>
+
+      <input
+        type="text"
+        id="blogSearch"
+        placeholder="Type to search..."
+        list="blogSuggestions"
+      >
+
+      <datalist id="blogSuggestions"></datalist>
+
+    </div>
+
+    <button
+      class="sidebar-btn"
+      onclick="handleSearch()"
+    >
+      GO
+    </button>
+
   </div>
 
+</div>
+
+
+
+
+        <div class="sidebar-widget">
+
+          <div class="widget-inner">
+
+            <h3 class="widget-title">RECENT BLOGS</h3>
+
+            <ul style="list-style: none; padding:0; margin:0; font-size: 0.6rem; font-weight: 700; line-height: 2;">
+
+              <li><a href="birthday.html" style="text-decoration:none; color:black;">MY 17TH BIRTHDAY</a></li>
+<li><a href="fresh-start.html" style="text-decoration:none; color:black;">FRESH START</a></li>
+<li><a href="life-as-army-kid.html" style="text-decoration:none; color:black;">LIFE AS AN ARMY KID</a></li>
+<li><a href="new.html" style="text-decoration:none; color:black;">THE SHIFT</a></li>
+
+              
+
+            </ul>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="sidebar-widget">
+
+          <div class="widget-inner" style="background: black; color: white;">
+
+            <h3 class="widget-title" style="color:white; border-color:#333;">Subscribe VIA EMAIL</h3>
+
+            <p style="font-size: 0.5rem; color: #bbb; margin-bottom: 12px;">Get Notifications directly to your Inbox!</p>
+
+            <input type="email" id="subEmail" placeholder="Enter email..." style="width:100%; border:1px solid #333; background:#222; color:white; padding: 8px; box-sizing: border-box; font-size: 0.6rem; margin-bottom: 10px;">
+
+            <button onclick="subscribeEmail()" style="width:100%; background:white; color:black; border:none; padding:8px; font-weight:800; font-size:0.5rem; cursor:pointer;">JOIN THE CLUB</button>
+
+          </div>
+
+        </div>
+
+      </aside>
+
+
+    </div>
+  </div>
+
+  <footer style="text-align:center; padding: 60px 0; border-top: 1px solid #eee; margin-top: 60px;">
+    <p style="font-size: 0.6rem; letter-spacing: 2px; color: #aaa;">© 2026 Archita Jaiswal. All rights reserved.</p>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+  <script>
+    const BLOG_ID = "lasts"; // Unique ID for this page's comments
+    const firebaseConfig = {
+      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
+      authDomain: "comment-123.firebaseapp.com",
+      projectId: "comment-123",
+      storageBucket: "comment-123.firebasestorage.app",
+      messagingSenderId: "1094221233460",
+      appId: "1:1094221233460:web:a149795852cdfe0908f961",
+      measurementId: "G-N88Z8M65Q1"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+    let currentUser = null;
+
+    auth.onAuthStateChanged(user => { 
+      currentUser = user; 
+      renderComments(); 
+    });
+
+    // Post Comment
+    function postComment() {
+      const text = document.getElementById("commentBox").value;
+      if (!currentUser) { 
+        auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); 
+        return; 
+      }
+      if (text.trim() === "") return;
+      
+      db.collection("blogs").doc(BLOG_ID).collection("comments").add({
+        text: text,
+        time: Date.now(),
+        userId: currentUser.uid,
+        displayName: currentUser.displayName,
+        userEmail: currentUser.email
+      });
+      document.getElementById("commentBox").value = "";
+    }
+
+    // Render Comments
+    function renderComments() {
+      db.collection("blogs").doc(BLOG_ID).collection("comments").orderBy("time", "desc").onSnapshot(snap => {
+        let html = "";
+        snap.forEach(doc => {
+          const data = doc.data();
+          const initials = data.userEmail ? data.userEmail.charAt(0).toUpperCase() : "?";
+          html += `
+            <div class="comment-item">
+              <div class="initial-circle">${initials}</div>
+              <div style="flex-grow:1;">
+                <strong>${data.displayName || 'Anon'}</strong>
+                <p style="margin:5px 0 0 0; font-size:0.9rem;">${data.text}</p>
+              </div>
+            </div>`;
+        });
+        document.getElementById("commentsList").innerHTML = html;
+      });
+    }
+
+    
+
+    // Subscribe Logic
+    function subscribeEmail() {
+      const e = document.getElementById("subEmail").value;
+      if (!e.includes("@")) { alert("Enter valid email!"); return; }
+      db.collection("subscribers").add({ email: e, time: Date.now() }).then(() => alert("Subscribed!"));
+    }
+
+
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

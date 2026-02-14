@@ -1,735 +1,266 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>Archita Jaiswal Blogs</title>
-
-
-
-  <link rel="stylesheet" href="blogdesign.css" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
-
-
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet" />
 
   <style>
-
-    /* --- Custom Fonts --- */
-
+    /* --- CUSTOM FONTS --- */
     @font-face { font-family: "Valentina"; src: url("Hello Valentina.ttf"); }
 
-    @font-face { font-family: "ConsolaMono"; src: url("consola-mono.ttf"); }
-
-
-
-    /* --- HUGE HEADER DESIGN --- */
-
-    .site-title {
-
-      font-family: "Valentina", cursive;
-
-      font-size: 8rem; 
-
-      line-height: 1;
-
-      display: inline-block;
-
-    }
-
-
-
-    .black-box {
-
-      background: black;
-
-      color: white;
-
-      padding: 15px 30px; 
-
-      font-size: 7.5rem; 
-
-      font-family: "ConsolaMono", monospace;
-
-      display: inline-block;
-
-      vertical-align: middle;
-
-      line-height: 1;
-
-    }
-
-
-
-    .blog-title {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 30px; 
-
-      margin-top: 40px;
-
-    }
-
-
-
-    /* --- PAGE BASE --- */
-
-    body {
-
-      margin: 0;
-
-      min-height: 100vh;
-
-      font-family: 'Segoe UI', sans-serif;
-
-      background-image: url('beigewall1.jpeg');
-
-      background-repeat: no-repeat;
-
-      background-size: cover;
-
-      background-position: center;
-
-      background-attachment: fixed;
-
-      color: #333;
-
-      padding: 20px;
-
-      overflow-x: hidden;
-
-    }
-
-
-
-    header {
-
-      text-align: center;
-
-      margin: 40px 0 60px;
-
-      position: relative;
-
-      width: fit-content;
-
-      transform-origin: top center;
-
-    }
-
-
-
-    .header-scale {
-
-      width: 100%;
-
-      display: flex;
-
-      justify-content: center;
-
-    }
-
-
-
-    .top-links {
-
-      position: absolute;
-
-      top: -25px;
-
-      right: 20px;
-
-      display: flex;
-
-      gap: 15px;
-
-    }
-
-
-
-    .top-links a {
-
-      font-family: 'Shadows Into Light', cursive;
-
-      font-size: 1.2em;
-
-      text-decoration: none;
-
-      color: black;
-
-    }
-
-
-
-    /* --- SEARCH --- */
-
-    .search-container { position: relative; }
-
-    .search-container input {
-
-      font-family: 'Shadows Into Light', cursive;
-
-      font-size: 1em;
-
-      padding: 5px 30px 5px 8px;
-
-      border: 2px solid black;
-
-      border-radius: 5px;
-
-      outline: none;
-
-    }
-
-    .search-results {
-
-      position: absolute;
-
-      top: 35px;
-
-      left: 0;
-
-      width: 100%;
-
-      background: white;
-
-      border: 1px solid #000;
-
-      border-radius: 5px;
-
-      max-height: 200px;
-
-      overflow-y: auto;
-
-      display: none;
-
-      z-index: 20;
-
-    }
-
-    .search-results div { border-bottom: 1px solid #eee; padding: 10px; cursor: pointer; text-align: left; }
-
-
-
-    /* --- PROFILE IMAGE --- */
-
-    .torn-image {
-
-      width: 110px; 
-
-      height: 110px;
-
-      object-fit: cover;
-
-      transform: rotate(-3deg);
-
-      box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
-
-      clip-path: polygon(5% 0%, 95% 0%, 100% 20%, 95% 100%, 5% 100%, 0% 80%);
-
-    }
-
-
-
-    .social-icons {
-
-      display: flex;
-
-      gap: 20px;
-
-      justify-content: center;
-
-      margin-top: 20px;
-
-    }
-
-    .social-icons img { width: 40px; height: 40px; }
-
-
-
-    /* --- BLOG GRID (FIXED BOX SIZE) --- */
-
-    .blog-grid {
-
-      display: grid;
-
-      /* Using px instead of fr keeps them from stretching on mobile */
-
-      grid-template-columns: repeat(auto-fit, 340px); 
-
-      gap: 50px;
-
-      max-width: 1450px;
-
-      margin: 80px auto;
-
-      padding: 20px;
-
-      justify-content: center; /* This centers the fixed-width boxes */
-
-    }
-
-
-
+    body { margin: 0; background-color: #fff; font-family: 'Montserrat', sans-serif; padding: 40px; color: #000; }
+
+    /* --- HEADER --- */
+    header { display: flex; flex-direction: column; align-items: center; margin-bottom: 80px; }
+    .blog-title { display: flex; align-items: center; gap: 15px; }
+    .site-title { font-family: "Valentina", cursive; font-size: clamp(3rem, 8vw, 6rem); line-height: 1; }
+    .black-box { background: #000; color: #fff; padding: 5px 20px; font-weight: 700; font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -1px; }
+
+    /* --- LAYOUT --- */
+    .container { display: flex; max-width: 1500px; margin: 0 auto; gap: 50px; }
+    nav { width: 140px; flex-shrink: 0; text-align: right; padding-top: 10px; }
+    nav a { display: block; text-decoration: none; color: #000; font-size: 0.9rem; font-weight: 300; margin-bottom: 12px; letter-spacing: 1px; transition: 0.3s; }
+    nav a:hover { color: #888; }
+
+    /* --- MASONRY GRID --- */
+    .blog-grid { column-count: 3; column-gap: 40px; width: 100%; }
+
+    /* --- BLOG CARD --- */
     .blog-wrapper {
-
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 110px; 
       position: relative;
-
-      width: 340px; /* Lock the width here */
-
+      background: #000; 
     }
 
-
-
-    /* --- RESPONSIVE SCALING --- */
-
-    @media (max-width: 1200px) { header { transform: scale(0.8); } }
-
-    @media (max-width: 1000px) { header { transform: scale(0.65); } }
-
-    @media (max-width: 800px) { header { transform: scale(0.5); } }
-
-    @media (max-width: 650px) {
-
-      header { transform: scale(0.35); }
-
+    .blog-post {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      border: 1px solid #000; 
+      padding: 8px; 
+      background: #fff;
+      position: relative;
+      z-index: 2;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
+    .blog-wrapper:hover .blog-post { transform: translate(-10px, -10px); }
+    .post-image { width: 100%; height: auto; display: block; }
 
-
-    footer { text-align: center; margin-top: 50px; padding-bottom: 30px; color: #aaa; }
-
-
-
-    /* Gmail Popup */
-
-    .gmail-box-container { position: relative; display: inline-block; }
-
-    .gmail-popup {
-
-      display: none;
-
+    /* --- THE UNBREAKABLE DOUBLE BORDER CARD --- */
+    .post-content-outer {
+      background: #fff;
+      border: 1px solid #000; 
+      padding: 8px;           
       position: absolute;
-
-      top: 50px;
-
+      bottom: -22px; 
       left: 50%;
-
       transform: translateX(-50%);
-
-      background: white;
-
-      color: black;
-
-      padding: 8px 15px;
-
-      border: 2px solid black;
-
-      border-radius: 5px;
-
-      font-family: 'ConsolaMono', monospace;
-
-      font-size: 0.9rem;
-
-      white-space: nowrap;
-
-      z-index: 100;
-
-      box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
-
+      width: fit-content;    
+      z-index: 10;
+      transition: all 0.4s ease;
     }
 
-    .gmail-popup.show { display: block; }
+    .post-content-inner {
+      border: 1px solid #000; 
+      padding: 10px 18px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
 
+    .blog-wrapper:hover .post-content-outer {
+      bottom: 25px; 
+    }
 
+    .post-title {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.75rem; 
+      margin: 0;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
 
+    .post-subtitle {
+      font-size: 0.5rem;
+      color: #181818;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      line-height: 1.4;
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+
+    .blog-wrapper:hover .post-subtitle {
+      max-height: 60px; 
+      opacity: 1;
+      margin-top: 15px; 
+    }
+
+    .post-subtitle strong { color: #000; }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 1100px) { .blog-grid { column-count: 2; } }
+    @media (max-width: 800px) {
+      .container { flex-direction: column; }
+      nav { width: 100%; text-align: center; margin-bottom: 30px; }
+      .blog-grid { column-count: 1; }
+    }
   </style>
-
 </head>
-
 <body>
 
+  <header>
+    <div class="blog-title">
+      <span class="site-title">Archita</span>
+      <span class="black-box">BLOGS</span>
+    </div>
+  </header>
 
-
-  <div class="header-scale">
-
-    <header>
-
-      <div class="top-links">
-
-        <a href="about.html">ABOUT</a>
-
-        <div class="search-container">
-
-          <input type="text" id="searchInput" placeholder="Search blogs..." />
-
-          <div class="search-results" id="searchResults"></div>
-
-        </div>
-
-      </div>
-
+  <div class="container">
+    <nav>
       
+    </nav>
 
-      <div class="blog-title">
-
-        <img src="new pfp.jpg" alt="Profile" class="torn-image" />
-
-        <span class="site-title">Archita Jaiswal</span>
-
-        <span class="black-box">BLOGS</span>
-
-      </div>
-
-
-
-      <div class="social-icons">
-
-        <div class="gmail-box-container">
-
-          <a href="javascript:void(0)" onclick="toggleGmail()" class="google-trigger">
-
-            <img src="logo3.png" alt="Google" />
-
-          </a>
-
-          <div id="gmailDisplay" class="gmail-popup">
-
-            architajaiswal6081@gmail.com
-
+    <main class="blog-grid">
+      
+      <div class="blog-wrapper">
+        <a href="birthday.html" class="blog-post">
+          <img src="17birthday.jpg" class="post-image" alt="Birthday" />
+          <div class="post-content-outer">
+            <div class="post-content-inner">
+               <h2 class="post-title">My 17th Birthday</h2>
+               <div class="post-subtitle"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong><br>OCT 19, 2023</div>
+            </div>
           </div>
-
-        </div>
-
-        <a href="https://www.instagram.com/it_me_archie" target="_blank">
-
-          <img src="instalogo1.png" alt="Instagram" />
-
         </a>
-
       </div>
 
-    </header>
+      <div class="blog-wrapper">
+        <a href="fresh-start.html" class="blog-post">
+          <img src="freshstartpic.jpg" class="post-image" alt="Fresh Start" />
+          <div class="post-content-outer">
+            <div class="post-content-inner">
+               <h2 class="post-title">Fresh Start</h2>
+               <div class="post-subtitle"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong><br>AUG 12, 2025</div>
+            </div>
+          </div>
+        </a>
+      </div>
 
+      <div class="blog-wrapper">
+        <a href="life-as-army-kid.html" class="blog-post">
+          <img src="armykid1.jpg" class="post-image" alt="Army Kid" />
+          <div class="post-content-outer">
+            <div class="post-content-inner">
+               <h2 class="post-title">Life as army kid</h2>
+               <div class="post-subtitle"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong><br>APR 12, 2025</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-wrapper">
+        <a href="love.html" class="blog-post">
+          <img src="love.png" class="post-image" alt="Love" />
+          <div class="post-content-outer">
+            <div class="post-content-inner">
+               <h2 class="post-title">Love is NOT Blind !!</h2>
+               <div class="post-subtitle"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong><br>FEB 12, 2026</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-wrapper">
+        <a href="new.html" class="blog-post">
+          <img src="new.jpg" class="post-image" alt="The Shift" />
+          <div class="post-content-outer">
+            <div class="post-content-inner">
+               <h2 class="post-title">The Shift</h2>
+               <div class="post-subtitle"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong><br>SEP 13, 2025</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-wrapper">
+        <a href="fear.html" class="blog-post">
+          <img src="download.jpg" class="post-image" alt="Fear" />
+          <div class="post-content-outer">
+            <div class="post-content-inner">
+               <h2 class="post-title">FEAR</h2>
+               <div class="post-subtitle"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong><br>SEP 20, 2025</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-wrapper">
+        <a href="MEN.html" class="blog-post">
+          <img src="MEN.jpg" class="post-image" alt="Men" />
+          <div class="post-content-outer">
+            <div class="post-content-inner">
+               <h2 class="post-title">What the hell MEN!!!</h2>
+               <div class="post-subtitle"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong><br>JAN 12, 2026</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-wrapper">
+        <a href="date.html" class="blog-post">
+          <img src="date0.jpg" class="post-image" alt="Love Nowadays" />
+          <div class="post-content-outer">
+            <div class="post-content-inner">
+               <h2 class="post-title">LOVE NOWADAYS</h2>
+               <div class="post-subtitle"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong><br>DEC 05, 2025</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-wrapper">
+        <a href="chaos.html" class="blog-post">
+          <img src="chaos.jpg" class="post-image" alt="Chaos" />
+          <div class="post-content-outer">
+            <div class="post-content-inner">
+               <h2 class="post-title">College-mates or Critics?</h2>
+               <div class="post-subtitle"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong><br>JAN 08, 2026</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-wrapper">
+        <a href="last.html" class="blog-post">
+          <img src="scribbles2.jpg" class="post-image" alt="Lasts" />
+          <div class="post-content-outer">
+            <div class="post-content-inner">
+               <h2 class="post-title">LASTS</h2>
+               <div class="post-subtitle"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong><br>APR 15, 2025</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </main>
   </div>
 
-
-
-  <main class="blog-grid">
-
-    <div class="blog-wrapper">
-
-      <a href="birthday.html" class="blog-post">
-
-        <img src="17birthday.jpg" class="post-image" alt="Birthday" />
-
-        <div class="post-content">
-
-          <h2 class="post-title">My 17th Birthday</h2>
-
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 19 Oct 2023</p>
-
-        </div>
-
-      </a>
-
-      <div class="shadow-box"></div>
-
-    </div>
-
-
-
-    <div class="blog-wrapper">
-
-      <a href="fresh-start.html" class="blog-post">
-
-        <img src="freshstartpic.jpg" class="post-image" alt="Fresh Start" />
-
-        <div class="post-content">
-
-          <h2 class="post-title">Fresh Start</h2>
-
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 12 Aug 2025</p>
-
-        </div>
-
-      </a>
-
-      <div class="shadow-box"></div>
-
-    </div>
-
-
-
-    <div class="blog-wrapper">
-
-      <a href="life-as-army-kid.html" class="blog-post">
-
-        <img src="armykid1.jpg" class="post-image" alt="Army Kid" />
-
-        <div class="post-content">
-
-          <h2 class="post-title">Life as army kid</h2>
-
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 12 Apr 2025</p>
-
-        </div>
-
-      </a>
-
-      <div class="shadow-box"></div>
-
-    </div>
-
-
-
-    <div class="blog-wrapper">
-
-      <a href="love.html" class="blog-post">
-
-        <img src="love.png" class="post-image" alt="Lasts" />
-
-        <div class="post-content">
-
-          <h2 class="post-title">Love is NOT Blind !!</h2>
-
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 12 Feb 2026</p>
-
-        </div>
-
-      </a>
-
-      <div class="shadow-box"></div>
-
-    </div>
-
-
-
-    <div class="blog-wrapper">
-
-      <a href="new.html" class="blog-post">
-
-        <img src="new.jpg" class="post-image" alt="The Shift" />
-
-        <div class="post-content">
-
-          <h2 class="post-title">The Shift</h2>
-
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 13 Sep 2025</p>
-
-        </div>
-
-      </a>
-
-      <div class="shadow-box"></div>
-
-    </div>
-
-
-
-    <div class="blog-wrapper">
-
-      <a href="fear.html" class="blog-post">
-
-        <img src="download.jpg" class="post-image" alt="Fear" />
-
-        <div class="post-content">
-
-          <h2 class="post-title">FEAR</h2>
-
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 20 Sep 2025</p>
-
-        </div>
-
-      </a>
-
-      <div class="shadow-box"></div>
-
-    </div>
-
-
-
-    <div class="blog-wrapper">
-
-      <a href="MEN.html" class="blog-post">
-
-        <img src="MEN.jpg" class="post-image" alt="Men" />
-
-        <div class="post-content">
-
-          <h2 class="post-title">What the hell MEN!!!</h2>
-
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 12 Jan 2026</p>
-
-        </div>
-
-      </a>
-
-      <div class="shadow-box"></div>
-
-    </div>
-
-
-
-    <div class="blog-wrapper">
-
-      <a href="date.html" class="blog-post">
-
-        <img src="date0.jpg" class="post-image" alt="Love Nowadays" />
-
-        <div class="post-content">
-
-          <h2 class="post-title">LOVE NOWADAYS</h2>
-
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 05 Dec 2025</p>
-
-        </div>
-
-      </a>
-
-      <div class="shadow-box"></div>
-
-    </div>
-
-
-
-    <div class="blog-wrapper">
-
-      <a href="chaos.html" class="blog-post">
-
-        <img src="chaos.jpg" class="post-image" alt="Chaos" />
-
-        <div class="post-content">
-
-          <h2 class="post-title">College-mates or Critics?</h2>
-
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 08 Jan 2026</p>
-
-        </div>
-
-      </a>
-
-      <div class="shadow-box"></div>
-
-    </div>
-
-
-     <div class="blog-wrapper">
-
-      <a href="last.html" class="blog-post">
-
-        <img src="scribbles2.jpg" class="post-image" alt="Lasts" />
-
-        <div class="post-content">
-
-          <h2 class="post-title">LASTS</h2>
-
-          <p class="post-date"><strong>BLOGS</strong> by <strong>ARCHITA JAISWAL</strong> - 15 Apr 2025</p>
-
-        </div>
-
-      </a>
-
-      <div class="shadow-box"></div>
-
-    </div>
-  </main>
-
-
-
   <footer>
-
-    <p>© 2026 Archita Jaiswal. All rights reserved.</p>
-
+    <p style="text-align: center; color: #aaa; margin: 80px 0; font-size: 0.7rem; letter-spacing: 2px;">© 2026 ARCHITA JAISWAL. ALL RIGHTS RESERVED.</p>
   </footer>
 
-
-
-  <script>
-
-    const blogs = [
-
-      { title: "My 17th Birthday", url: "birthday.html" },
-
-      { title: "Fresh Start", url: "fresh-start.html" },
-
-      { title: "Life as army kid", url: "life-as-army-kid.html" },
-
-      { title: "LASTS", url: "last.html" },
-
-      { title: "The Shift", url: "new.html" },
-
-      { title: "FEAR", url: "fear.html" },
-
-      { title: "What the hell MEN!!!", url: "MEN.html" },
-
-      { title: "LOVE NOWADAYS", url: "date.html" },
-
-      { title: "College-mates or Critics?", url: "chaos.html" }
-
-    ];
-
-    
-
-    const searchInput = document.getElementById("searchInput");
-
-    const searchResults = document.getElementById("searchResults");
-
-    
-
-    searchInput.addEventListener("input", () => {
-
-      const query = searchInput.value.toLowerCase();
-
-      searchResults.innerHTML = "";
-
-      if (query) {
-
-        const matches = blogs.filter(b => b.title.toLowerCase().includes(query));
-
-        matches.forEach(m => {
-
-          const div = document.createElement("div");
-
-          div.textContent = m.title;
-
-          div.onclick = () => window.location.href = m.url;
-
-          searchResults.appendChild(div);
-
-        });
-
-        searchResults.style.display = matches.length ? "block" : "none";
-
-      } else {
-
-        searchResults.style.display = "none";
-
-      }
-
-    });
-
-
-
-    function toggleGmail() {
-
-      const popup = document.getElementById("gmailDisplay");
-
-      popup.classList.toggle("show");
-
-    }
-
-  </script>
-
 </body>
-
 </html>

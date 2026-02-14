@@ -1,112 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="header-frame.css">
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Archita Jaiswal</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet" />
+  <title>About Me - Archita Jaiswal Blogs</title>
+   <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="search-style.css">
+     <script src="script1.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
 
   <style>
-    /* --- Global Styles --- */
+    /* --- CUSTOM FONTS --- */
+    @font-face { font-family: "Valentina"; src: url("Hello Valentina.ttf"); }
+
     body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #faf9f6;
-        background-image: url('beigewall1.jpeg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-        background-attachment: fixed;
-        color: #333;
-        padding: 20px;
-        position: relative;
-        overflow-x: hidden;
+      margin: 0;
+      background-color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      color: #000;
+      padding: 0;
+      overflow-x: hidden;
     }
 
-    /* --- The Content Box --- */
-    .content {
-        max-width: 800px;
-        margin: 60px auto;
-        background: rgba(255, 255, 255, 0.9); /* Slightly more solid for readability */
-        padding: 40px;
-        border: 2px solid black; /* Matches the frame thickness */
-        box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-        position: relative;
-        z-index: 1;
+    /* --- NAVIGATION --- */
+    .site-nav {
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #f0f0f0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    h2 {
-        font-family: 'Shadows Into Light', cursive;
-        font-size: 2.2em;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 10px;
+    .site-logo { 
+      font-family: "Valentina", cursive; 
+      font-size: 1.8rem; 
+      text-decoration: none; 
+      color: #000; 
+      display: flex;
+      align-items: center;
+    }
+    .site-logo span { 
+      background: black; color: white; padding: 2px 8px; 
+      font-family: 'Montserrat', sans-serif; font-weight: 800; 
+      font-size: 0.8rem; margin-left: 8px; letter-spacing: 1px;
+    }
+    
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a {
+      text-decoration: none; color: #000; font-size: 0.75rem;
+      font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      transition: 0.3s;
     }
 
-    p {
-        font-size: 1.1em;
-        line-height: 1.8;
-        margin-bottom: 20px;
+    /* --- MAIN LAYOUT --- */
+    .main-wrapper {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 40px;
     }
 
-    /* --- Back Button --- */
-    .back-link {
-        display: inline-block;
-        margin-top: 20px;
-        text-decoration: none;
-        color: black;
-        font-family: 'Shadows Into Light', cursive;
-        font-size: 1.4em;
-        font-weight: bold;
-        transition: transform 0.2s ease;
+    .hero-container {
+      position: relative;
+      width: 100%;
+      margin-bottom: 120px;
+    }
+    .hero-image {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      display: block;
+      border: 1px solid #eee;
     }
 
-    .back-link:hover {
-        transform: translateX(-5px);
-        color: #555;
+    .title-card {
+      position: absolute;
+      bottom: -45px;
+      left: 50px;
+      background: white;
+      border: 1px solid #000;
+      padding: 8px;
+      z-index: 10;
+      box-shadow: 10px 10px 0px rgba(0,0,0,0.05);
+    }
+    .title-card-inner {
+      border: 1px solid #000;
+      padding: 35px 50px;
+      background: white;
+      text-align: center;
+    }
+    .title-card h1 {
+      font-weight: 800;
+      font-size: 2.4rem;
+      margin: 0 0 12px 0;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 1;
     }
 
-    /* --- Date Line inside Frame --- */
-    .date-line {
-        font-family: 'Segoe UI', sans-serif;
-        font-size: 0.9em;
-        letter-spacing: 2px;
-        color: #666;
+    /* --- THE GRID: FORCED 2 COLUMNS --- */
+    .content-container {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr; 
+      gap: 60px;
+      align-items: start;
+    }
+
+    .article-text {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #333;
+    }
+    .article-text p { margin-bottom: 30px; }
+
+    /* --- SIDEBAR --- */
+    .sidebar-right {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .sidebar-widget {
+      border: 1px solid #000;
+      padding: 5px;
+      background: black;
+    }
+    .widget-inner {
+      background: white;
+      border: 1px solid #000;
+      padding: 25px;
+      position: relative;
+      top: -6px;
+      left: -6px;
+    }
+    .widget-title {
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    /* --- MOBILE PORTRAIT (FORCED 2 COLUMNS) --- */
+    @media (max-width: 768px) {
+      .site-nav { padding: 15px 20px; }
+      .main-wrapper { padding: 0 15px; }
+      .content-container { gap: 15px; grid-template-columns: 1.6fr 1.4fr; } 
+      .hero-image { height: 250px; }
+      .title-card { left: 10px; right: 10px; bottom: -30px; }
+      .title-card-inner { padding: 15px; }
+      .title-card h1 { font-size: 1.3rem; }
+      .article-text { font-size: 0.85rem; line-height: 1.6; }
+      .widget-inner { padding: 12px; }
+      .widget-title { font-size: 0.6rem; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>About Me</h1>
-    <p class="date-line">ARCHITA JAISWAL</p>
-  </header>
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo">Archita <span>BLOGS</span></a>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+    </div>
+  </nav>
 
-  <div class="content">
+  <div class="main-wrapper">
+    
+    <header class="hero-container">
+      <img src="new pfp.jpg" class="hero-image" alt="Archita Jaiswal" />
+      <div class="title-card">
+        <div class="title-card-inner">
+          <h1>About Me</h1>
+          <div style="font-size: 0.65rem; letter-spacing: 1.5px; text-transform: uppercase;">
+            The Girl Behind the Blogs — <b>Archita Jaiswal</b>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <h2>The Girl Behind the Blogs</h2>
+    <div class="content-container">
+      <article class="article-text">
+        <p>
+          Archita Jaiswal was born in Jabalpur, Madhya Pradesh, but her story was never tied down to one place. Being an army kid meant growing up across different cities, carrying pieces of each along the way. With a father in the army, her household was built on strict rules, discipline, and sharp routines—life inside those walls was anything but easy.
+        </p>
 
-    <p>
-      Archita Jaiswal was born in Jabalpur, Madhya Pradesh, but her story was never tied down to one place. Being an army kid meant growing up across different cities, carrying pieces of each along the way. With a father in the army, her household was built on strict rules, discipline, and sharp routines—life inside those walls was anything but easy.
-    </p>
+        <p>
+          And yet, Archita turned out nothing like the system tried to shape her. She is rebellious at heart, bold enough to live life on her own terms, unapologetic about walking paths that don’t always look like the “right” ones. The army lifestyle gave her structure, but her spirit gave her freedom.
+        </p>
 
-    <p>
-      And yet, Archita turned out nothing like the system tried to shape her. She is rebellious at heart, bold enough to live life on her own terms, unapologetic about walking paths that don’t always look like the “right” ones. The army lifestyle gave her structure, but her spirit gave her freedom.
-    </p>
+        <p>
+          Her personality? Messy, random, unpredictable—beautifully imperfect. She thrives in being different, in standing out from the crowd rather than blending in. For Archita, being “out of place” has always been her place.
+        </p>
 
-    <p>
-      Her personality? Messy, random, unpredictable—beautifully imperfect. She thrives in being different, in standing out from the crowd rather than blending in. For Archita, being “out of place” has always been her place.
-    </p>
+        <p>
+          This blog is her canvas—a place where she shares everything about her small messy world. Welcome to her world. Welcome to her blogs!
+        </p>
 
-    <p>
-      This blog is her canvas—a place where she shares everything about her small messy world. Welcome to her world. Welcome to her blogs!
-    </p>
+        <a href="index.html" style="font-family: 'Shadows Into Light', cursive; font-size: 1.4rem; color: #000; text-decoration: none; font-weight: 800;">← Back to Home</a>
+      </article>
 
-    <a href="index.html" class="back-link">← Back to Home</a>
+      <aside class="sidebar-right">
+
+    <!-- SEARCH WIDGET -->
+
+<div class="sidebar-widget">
+
+  <div class="widget-inner">
+
+    <h3 class="widget-title">SEARCH BLOGS</h3>
+
+    <div>
+
+      <input
+        type="text"
+        id="blogSearch"
+        placeholder="Type to search..."
+        list="blogSuggestions"
+      >
+
+      <datalist id="blogSuggestions"></datalist>
+
+    </div>
+
+    <button
+      class="sidebar-btn"
+      onclick="handleSearch()"
+    >
+      GO
+    </button>
 
   </div>
 
+</div>
+        
+
+
+        <div class="sidebar-widget" style="background: white;">
+          <div class="widget-inner" style="background: black; color: white;">
+            <h3 class="widget-title" style="color:white; border-color:#333;">Subscribe</h3>
+            <p style="font-size: 0.5rem; color: #bbb; margin-bottom: 10px;">Get notifications directly!</p>
+            <input type="email" id="subEmail" placeholder="Email..." style="width:100%; border:1px solid #333; background:#222; color:white; padding: 6px; font-size: 0.6rem; margin-bottom: 10px;">
+            <button onclick="subscribeEmail()" style="width:100%; background:white; color:black; border:none; padding:8px; font-weight:800; font-size:0.55rem; cursor:pointer; text-transform: uppercase;">JOIN CLUB</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer style="text-align:center; padding: 60px 0; border-top: 1px solid #eee; margin-top: 60px;">
+    <p style="font-size: 0.6rem; letter-spacing: 2px; color: #aaa;">© 2026 Archita Jaiswal. All rights reserved.</p>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    // Initialize Firebase (using your config from before)
+    const firebaseConfig = {
+      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
+      authDomain: "comment-123.firebaseapp.com",
+      projectId: "comment-123",
+      storageBucket: "comment-123.firebasestorage.app",
+      messagingSenderId: "1094221233460",
+      appId: "1:1094221233460:web:a149795852cdfe0908f961",
+      measurementId: "G-N88Z8M65Q1"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    function subscribeEmail() {
+      const email = document.getElementById("subEmail").value;
+      if (!email.includes("@")) { alert("Valid email please!"); return; }
+      db.collection("subscribers").add({ email: email, time: Date.now() })
+        .then(() => alert("Thanks for subscribing!"));
+    }
+
+    
+  </script>
 </body>
 </html>
-
