@@ -7,18 +7,7 @@
    <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="search-style.css">
 
-        <script>   const firebaseConfig = {
-      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
-      authDomain: "comment-123.firebaseapp.com",
-      projectId: "comment-123",
-      storageBucket: "comment-123.firebasestorage.app",
-      messagingSenderId: "1094221233460",
-      appId: "1:1094221233460:web:a149795852cdfe0908f961",
-      measurementId: "G-N88Z8M65Q1"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    window.db = firebase.firestore(); </script>     
+             
 
      <script src="script1.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
@@ -277,13 +266,20 @@
   <script>
     // Initialize Firebase (using your config from before)
     
+       const firebaseConfig = {
+      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
+      authDomain: "comment-123.firebaseapp.com",
+      projectId: "comment-123",
+      storageBucket: "comment-123.firebasestorage.app",
+      messagingSenderId: "1094221233460",
+      appId: "1:1094221233460:web:a149795852cdfe0908f961",
+      measurementId: "G-N88Z8M65Q1"
+    };
 
-    function subscribeEmail() {
-      const email = document.getElementById("subEmail").value;
-      if (!email.includes("@")) { alert("Valid email please!"); return; }
-      db.collection("subscribers").add({ email: email, time: Date.now() })
-        .then(() => alert("Thanks for subscribing!"));
-    }
+    firebase.initializeApp(firebaseConfig);
+    window.db = firebase.firestore(); 
+
+    
 
     
   </script>
