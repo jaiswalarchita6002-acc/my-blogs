@@ -16,6 +16,41 @@
 
   <link rel="stylesheet" href="search-style.css">
 
+   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+<script>   
+ const BLOG_ID = "new";
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
+
+      authDomain: "comment-123.firebaseapp.com",
+
+      projectId: "comment-123",
+
+      storageBucket: "comment-123.firebasestorage.app",
+
+      messagingSenderId: "1094221233460",
+
+      appId: "1:1094221233460:web:a149795852cdfe0908f961",
+
+      measurementId: "G-N88Z8M65Q1"
+
+    };
+
+
+
+    firebase.initializeApp(firebaseConfig);
+
+    window.db = firebase.firestore();
+
+    window.auth = firebase.auth(); </script>
+
   <script src="script1.js" defer></script>
 
   
@@ -78,7 +113,11 @@
 
     .site-logo { font-family: "Valentina", cursive; font-size: 1.8rem; text-decoration: none; color: #000; display: flex; align-items: center; }
 
-    .site-logo span { background: black; color: white; padding: 2px 8px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.8rem; margin-left: 8px; letter-spacing: 1px; }
+    .site-logo span {
+         background: black;
+         color: white;
+         padding: 2px 8px;
+         font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.8rem; margin-left: 8px; letter-spacing: 1px; }
 
     .nav-links { display: flex; gap: 30px; }
 
@@ -352,43 +391,13 @@
 
 
 
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  
 
 
 
   <script>
 
-    const BLOG_ID = "new";
-
-    const firebaseConfig = {
-
-      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
-
-      authDomain: "comment-123.firebaseapp.com",
-
-      projectId: "comment-123",
-
-      storageBucket: "comment-123.firebasestorage.app",
-
-      messagingSenderId: "1094221233460",
-
-      appId: "1:1094221233460:web:a149795852cdfe0908f961",
-
-      measurementId: "G-N88Z8M65Q1"
-
-    };
-
-
-
-    firebase.initializeApp(firebaseConfig);
-
-    const db = firebase.firestore();
-
-    const auth = firebase.auth();
+    
 
     let currentUser = null;
 

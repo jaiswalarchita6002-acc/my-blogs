@@ -8,6 +8,20 @@
   <title>Life as an Army Kid - Archita Jaiswal Blogs</title>
  <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="search-style.css">
+
+     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+       <script>
+    const BLOG_ID = "lifearmy";
+    const firebaseConfig = { apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI", authDomain: "comment-123.firebaseapp.com", projectId: "comment-123", storageBucket: "comment-123.firebasestorage.app", messagingSenderId: "1094221233460", appId: "1:1094221233460:web:a149795852cdfe0908f961", measurementId: "G-N88Z8M65Q1" };
+    firebase.initializeApp(firebaseConfig);
+    window.db = firebase.firestore();
+    window.auth = firebase.auth(); </script>
+
      <script src="script1.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
 
@@ -319,16 +333,9 @@ In the end, the army kid lifestyle is one-of-a-kind. The friendships you build, 
     </div>
   </div>
 
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script>
 
-  <script>
-    const BLOG_ID = "lifearmy";
-    const firebaseConfig = { apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI", authDomain: "comment-123.firebaseapp.com", projectId: "comment-123", storageBucket: "comment-123.firebasestorage.app", messagingSenderId: "1094221233460", appId: "1:1094221233460:web:a149795852cdfe0908f961", measurementId: "G-N88Z8M65Q1" };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-    const auth = firebase.auth();
+  
     let currentUser = null;
 
     auth.onAuthStateChanged(user => { currentUser = user; renderComments(); });
