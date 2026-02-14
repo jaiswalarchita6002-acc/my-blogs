@@ -54,15 +54,22 @@
       align-items: center;
     }
 
-    .site-logo span {
-      background: black;
-      color: white;
-      padding: 2px 8px;
-      font-weight: 800;
-      font-size: 0.8rem;
-      margin-left: 8px;
-      letter-spacing: 1px;
-    }
+    .site-logo > span{
+  background:black;
+  color:white;
+  padding:2px 8px;
+  font-weight:800;
+  font-size:.8rem;
+  margin-left:8px;
+
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.site-logo span{
+  background:black;
+  color:white !important;
+  font-family: Arial !important;
+}
 
     .nav-links {
       display: flex;
@@ -408,7 +415,7 @@
 
         <textarea id="commentBox" placeholder="Write your thoughts here..."></textarea>
 
-        <button id="submitBtn" onclick="postComment()">Submit Comment</button>
+        <button id="submitBtn" onclick="postComment()">Submit</button>
 
         <div id="commentsList"></div>
 

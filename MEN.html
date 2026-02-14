@@ -320,36 +320,104 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+
   <script>
-    /* ... Previous Firebase Logic ... */
+
     const BLOG_ID = "men";
-    const firebaseConfig = { apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI", authDomain: "comment-123.firebaseapp.com", projectId: "comment-123", storageBucket: "comment-123.firebasestorage.app", messagingSenderId: "1094221233460", appId: "1:1094221233460:web:a149795852cdfe0908f961", measurementId: "G-N88Z8M65Q1" };
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
+      authDomain: "comment-123.firebaseapp.com",
+      projectId: "comment-123",
+      storageBucket: "comment-123.firebasestorage.app",
+      messagingSenderId: "1094221233460",
+      appId: "1:1094221233460:web:a149795852cdfe0908f961"
+    };
+
     firebase.initializeApp(firebaseConfig);
+
     const db = firebase.firestore();
     const auth = firebase.auth();
+
     let currentUser = null;
-    auth.onAuthStateChanged(user => { currentUser = user; renderComments(); });
+
+
+    auth.onAuthStateChanged(user => {
+      currentUser = user;
+      renderComments();
+    });
+
+
     function postComment() {
+
       const text = document.getElementById("commentBox").value;
-      if (!currentUser) { auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); return; }
+
+      if (!currentUser) {
+        auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+        return;
+      }
+
       if (text.trim() === "") return;
-      db.collection("blogs").doc(BLOG_ID).collection("comments").add({ text: text, time: Date.now(), userId: currentUser.uid, displayName: currentUser.displayName, userEmail: currentUser.email });
+
+      db.collection("blogs").doc(BLOG_ID).collection("comments").add({
+        text: text,
+        time: Date.now(),
+        userId: currentUser.uid,
+        displayName: currentUser.displayName,
+        userEmail: currentUser.email
+      });
+
       document.getElementById("commentBox").value = "";
     }
+
+
     function renderComments() {
-      db.collection("blogs").doc(BLOG_ID).collection("comments").orderBy("time", "desc").onSnapshot(snap => {
-        let html = "";
-        snap.forEach(doc => { const data = doc.data(); html += `<div style="background:#f9f9f9; padding:10px; margin-top:10px; border-left:3px solid #000;"><strong>${data.displayName || 'Anon'}</strong><p>${data.text}</p></div>`; });
-        document.getElementById("commentsList").innerHTML = html;
-      });
-    }
-    
-    function subscribeEmail() {
-      const e = document.getElementById("subEmail").value;
-      if (!e.includes("@")) return;
-      db.collection("subscribers").add({ email: e, time: Date.now() }).then(() => alert("Subscribed!"));
+
+      db.collection("blogs")
+        .doc(BLOG_ID)
+        .collection("comments")
+        .orderBy("time", "desc")
+        .onSnapshot(snap => {
+
+          let html = "";
+
+          snap.forEach(doc => {
+
+            const data = doc.data();
+            const isOwner = currentUser && currentUser.uid === data.userId;
+
+            html += `
+              <div class="comment-item">
+                <div>
+                  <strong>${data.displayName || 'Anon'}</strong>
+                  <p>${data.text}</p>
+                </div>
+                ${isOwner ? `<button onclick="deleteComm('${doc.id}')" style="background:none;border:none;cursor:pointer;">🗑️</button>` : ""}
+              </div>
+            `;
+          });
+
+          document.getElementById("commentsList").innerHTML = html;
+
+        });
     }
 
-      </script>
+
+    function deleteComm(id) {
+
+      if (confirm("Delete?")) {
+
+        db.collection("blogs")
+          .doc(BLOG_ID)
+          .collection("comments")
+          .doc(id)
+          .delete();
+
+      }
+    }
+
+  </script>
+
 </body>
 </html>
