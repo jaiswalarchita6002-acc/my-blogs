@@ -133,7 +133,7 @@ function subscribeEmail() {
     time: firebase.firestore.FieldValue.serverTimestamp()
   })
   .then(() => {
-    alert("Success! The 'subscribers' collection is back!");
+    alert("YOU HAVE SUBSCRIBED TO ARCHITA BLOGS SUCESSFULLY!!");
     field.value = ""; // Clear the input
   })
   .catch((error) => {
