@@ -114,34 +114,18 @@ function handleSearch() {
 /* SUBSCRIBE (Optional) */
 function subscribeEmail() {
 
-  // Check if Firebase DB is ready
-  if (!window.db) {
-    alert("Please wait, loading...");
-    return;
-  }
-
   const field = document.getElementById("subEmail");
+
   if (!field) return;
 
-  const email = field.value.trim();
+  if (!field.value.includes("@")) {
 
-  if (!email.includes("@")) {
-    alert("Enter a valid email");
+    alert("Enter valid email");
     return;
+
   }
 
-  // Save to Firestore
-  window.db.collection("subscribers").add({
-    email: email,
-    time: firebase.firestore.FieldValue.serverTimestamp()
-  })
-  .then(() => {
-    alert("Subscribed successfully!");
-    field.value = "";
-  })
-  .catch((err) => {
-    console.error("Firebase error:", err);
-    alert("Subscription failed");
-  });
+  alert("Subscribed!");
+  field.value = "";
 
 }
