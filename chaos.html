@@ -5,31 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>College-mates or Critics? - Archita Jaiswal Blogs</title>
 
-  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="style3.css">
   <link rel="stylesheet" href="search-style.css">
 
-
-   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-
-      <script>
-const BLOG_ID = "chaos";
-    const firebaseConfig = {
-      apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
-      authDomain: "comment-123.firebaseapp.com",
-      projectId: "comment-123",
-      storageBucket: "comment-123.firebasestorage.app",
-      messagingSenderId: "1094221233460",
-      appId: "1:1094221233460:web:a149795852cdfe0908f961",
-      measurementId: "G-N88Z8M65Q1"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    window.db = firebase.firestore();
-    window.auth = firebase.auth(); </script>
-
-  <script src="script1.js" defer></script>
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&family=Shadows+Into+Light&display=swap" rel="stylesheet" />
 
@@ -126,6 +104,11 @@ const BLOG_ID = "chaos";
       <img src="chaos.jpg" class="hero-image" alt="College Chaos" />
       <div class="title-card">
         <div class="title-card-inner">
+           <div style="margin-top: 15px;">
+  <button class="star-btn" onclick="toggleLike(this)">☆</button>
+  <span class="like-count" id="blogLikes">0</span>
+</div>
+         
           <h1>College-mates or Critics?</h1>
           <div class="title-meta"><b>BLOGS</b> by <strong>ARCHITA JAISWAL</strong> — JAN 08, 2026</div>
         </div>
@@ -243,41 +226,27 @@ const BLOG_ID = "chaos";
     <p style="font-size: 0.6rem; letter-spacing: 2px; color: #aaa;">© 2026 Archita Jaiswal. All rights reserved.</p>
   </footer>
 
-  
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 
-  <script>
-    
-    let currentUser = null;
+<script>
+  window.BLOG_ID = "chaos"; 
+  const firebaseConfig = {
+    apiKey: "AIzaSyAlxJ134nGzQGwiKW30Rj9B1dr5IqQlblI",
+    authDomain: "comment-123.firebaseapp.com",
+    projectId: "comment-123",
+    storageBucket: "comment-123.firebasestorage.app",
+    messagingSenderId: "1094221233460",
+    appId: "1:1094221233460:web:a149795852cdfe0908f961",
+    measurementId: "G-N88Z8M65Q1"
+  };
+  firebase.initializeApp(firebaseConfig);
+  window.db = firebase.firestore();
+  window.auth = firebase.auth();
+</script>
 
-    auth.onAuthStateChanged(user => { currentUser = user; renderComments(); });
+<script src="script3.js" defer></script>
 
-    function postComment() {
-      const text = document.getElementById("commentBox").value;
-      if (!currentUser) { auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); return; }
-      if (text.trim() === "") return;
-      db.collection("blogs").doc(BLOG_ID).collection("comments").add({
-        text: text, time: Date.now(), userId: currentUser.uid,
-        displayName: currentUser.displayName, userEmail: currentUser.email
-      });
-      document.getElementById("commentBox").value = "";
-    }
-
-    function renderComments() {
-      db.collection("blogs").doc(BLOG_ID).collection("comments").orderBy("time", "desc").onSnapshot(snap => {
-        let html = "";
-        snap.forEach(doc => {
-          const data = doc.data();
-          const isOwner = currentUser && currentUser.uid === data.userId;
-          html += `<div class="comment-item">
-            <div><strong>${data.displayName || 'Anon'}</strong><p>${data.text}</p></div>
-            ${isOwner ? `<button onclick="deleteComm('${doc.id}')" style="background:none; border:none; cursor:pointer;">🗑️</button>` : ""}
-          </div>`;
-        });
-        document.getElementById("commentsList").innerHTML = html;
-      });
-    }
-
-    function deleteComm(id) { if(confirm("Delete?")) db.collection("blogs").doc(BLOG_ID).collection("comments").doc(id).delete(); }
-  </script>
 </body>
 </html>
