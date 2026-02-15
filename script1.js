@@ -112,38 +112,32 @@ function handleSearch() {
 
 
 /* SUBSCRIBE (Optional) */
-/* SUBSCRIBE (Fixed) */
 function subscribeEmail() {
-  // 1. Check if Firebase is ready
+  // Check if the database is connected
   if (!window.db) {
-    alert("Database connection not ready. Please wait a moment.");
+    alert("Wait a second, the database is still loading...");
     return;
   }
 
   const field = document.getElementById("subEmail");
-  if (!field) return;
-
   const email = field.value.trim();
 
-  // 2. Simple validation
   if (!email.includes("@")) {
-    alert("Please enter a valid email address.");
+    alert("Please enter a real email!");
     return;
   }
 
-  // 3. THE MISSING PART: Save to Firestore
+  // This part RECREATES the collection automatically
   window.db.collection("subscribers").add({
     email: email,
-    time: firebase.firestore.FieldValue.serverTimestamp() // Adds a date/time stamp
+    time: firebase.firestore.FieldValue.serverTimestamp()
   })
   .then(() => {
-    // This happens if it works
-    alert("Successfully joined the club! Check your inbox soon.");
-    field.value = "";
+    alert("Success! The 'subscribers' collection is back!");
+    field.value = ""; // Clear the input
   })
-  .catch((err) => {
-    // This happens if there is an error
-    console.error("Firebase Error:", err);
-    alert("Oops! Something went wrong. Try again later.");
+  .catch((error) => {
+    console.error("Error:", error);
+    alert("It failed. Check the console!");
   });
 }
